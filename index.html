@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Premium Muslimah Planner - Barrkeh DigiProducts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top, #2A2A2A 0%, #111111 55%, #050005 100%);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: radial-gradient(circle at top, #2A2A2A 0%, #111111 55%, #050005 100%);
+            color: #F2F2F2;
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 12px;
+            min-height: 100vh;
+        }
+
+        .logo-section {
+            position: relative;
+            text-align: center;
+            padding: 24px 16px 20px;
+            background: radial-gradient(circle at top, #1C1C1C 0%, #050005 60%, #000 100%);
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75);
+            margin-bottom: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+        }
+
+        .logo-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 10% 0%, rgba(253, 224, 171, 0.15) 0, transparent 45%), radial-gradient(circle at 90% 10%, rgba(248, 250, 252, 0.06) 0, transparent 50%), radial-gradient(circle at 50% 120%, rgba(212, 175, 55, 0.15) 0, transparent 55%);
+            pointer-events: none;
+            mix-blend-mode: screen;
+            opacity: 0.9;
+        }
+
+        .logo-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(from 220deg, #F9E7B5, #C9A961, #8C6A2B, #F5E2A4, #C9A961);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.75), 0 0 0 2px rgba(0, 0, 0, 0.9);
+            flex-shrink: 0;
+        }
+
+        .logo-mark span {
+            font-family: "Times New Roman", serif;
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: #111827;
+        }
+
+        .logo-wordmark {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .logo-main {
+            font-size: 18px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #F9FAFB;
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FDE68A;
+        }
+
+        .logo-tagline {
+            margin-top: 4px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #E5E7EB;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        .logo-divider {
+            width: 100px;
+            height: 1.5px;
+            margin-top: 12px;
+            background: linear-gradient(to right, transparent, #D4AF37, transparent);
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            background: radial-gradient(circle at top, #141414 0%, #050005 70%, #000 100%);
+            padding: 10px 10px 12px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-tab {
+            padding: 8px 12px;
+            background: #111111;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 11px;
+            font-weight: 600;
+            color: #E5E7EB;
+            border: 1px solid rgba(148, 163, 184, 0.55);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            touch-action: manipulation;
+        }
+
+        .nav-tab:active {
+            background: #1F2933;
+            color: #F9FAFB;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, #D4AF37 0%, #B88932 100%);
+            color: #111827;
+            border-color: transparent;
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.85);
+        }
+
+        .section {
+            position: relative;
+            display: none;
+            background: radial-gradient(circle at top, #2A2A2A 0%, #141414 55%, #050005 100%);
+            padding: 20px 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
+            animation: fadeIn 0.4s ease;
+            color: #F2F2F2;
+            overflow: hidden;
+            border: 1px solid rgba(55, 65, 81, 0.7);
+            margin-bottom: 16px; /* Added margin for separation */
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section::before, .section::after {
+            content: "";
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0.35;
+            z-index: 0;
+        }
+
+        .section::before {
+            top: -20px;
+            left: -10px;
+            background: radial-gradient(circle at 0 0, rgba(212, 175, 55, 0.55) 0, transparent 55%), conic-gradient(from 200deg, rgba(212, 175, 55, 0.4), transparent 70%);
+            mask-image: radial-gradient(circle at 0 0, black 0, transparent 65%);
+        }
+
+        .section::after {
+            bottom: -25px;
+            right: -10px;
+            background: radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.55) 0, transparent 55%), conic-gradient(from 20deg, rgba(212, 175, 55, 0.4), transparent 70%);
+            mask-image: radial-gradient(circle at 100% 100%, black 0, transparent 65%);
+        }
+
+        .section-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header-deco {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .crescent-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            background: conic-gradient(from 210deg, #FDE7B0, #D4AF37, #8C6A2B, #FBE3A2, #D4AF37);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 2px #050005, 0 6px 16px rgba(212, 175, 55, 0.9);
+            flex-shrink: 0;
+        }
+
+        .crescent-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #FDE7B0;
+            font-size: 22px;
+            margin-bottom: 14px;
+            border-bottom: 1.5px solid rgba(184, 137, 50, 0.6);
+            padding-bottom: 8px;
+            word-break: break-word;
+        }
+
+        h3 {
+            color: #E5E7EB;
+            font-size: 16px;
+            margin: 18px 0 10px 0;
+        }
+
+        p {
+            color: #CFCFCF;
+            font-size: 14px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #4A4A4A;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Georgia', serif;
+            background: #353535;
+            color: #F5F5F5;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            -webkit-appearance: none;
+        }
+
+        .input-field::placeholder {
+            color: #A7A7A7;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.4);
+            background: #3F3F3F;
+        }
+
+        textarea.input-field {
+            min-height: 100px;
+            resize: vertical;
+            font-size: 16px;
+        }
+
+        .btn, .start-btn, .save-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #D4AF37 0%, #9A7A2F 100%);
+            color: #111827;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 5px 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: manipulation;
+        }
+        
+        .save-btn {
+            width: 100%;
+            margin: 20px 0 0 0;
+        }
+
+        .btn:active, .start-btn:active, .save-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.7);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: #262626;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: 1px solid #3A3A3A;
+            min-height: 44px;
+            gap: 10px;
+        }
+
+        .checkbox-item:active {
+            background: #303030;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #D4AF37;
+            flex-shrink: 0;
+        }
+
+        .habit-tracker {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .habit-item {
+            padding: 14px 10px;
+            background: #262626;
+            border: 1px solid #3A3A3A;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #E5E7EB;
+            font-size: 13px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            touch-action: manipulation;
+        }
+
+        .habit-item:active {
+            border-color: #D4AF37;
+            transform: scale(0.97);
+        }
+
+        .habit-item.completed {
+            background: linear-gradient(135deg, #D4AF37 0%, #9A7A2F 100%);
+            color: #111827;
+            border-color: #B88932;
+        }
+
+        .salah-tracker {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .salah-item {
+            padding: 16px 12px;
+            background: #262626;
+            border: 1px solid #3A3A3A;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #F2F2F2;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            touch-action: manipulation;
+        }
+
+        .salah-item:active {
+            border-color: #D4AF37;
+            transform: scale(0.97);
+        }
+
+        .salah-item.completed {
+            background: linear-gradient(135deg, #D4AF37 0%, #9A7A2F 100%);
+            color: #111827;
+            border-color: #B88932;
+        }
+
+        .emotion-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 14px 0;
+        }
+
+        .emotion-btn {
+            padding: 10px 14px;
+            background: #262626;
+            border: 1px solid #3A3A3A;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 13px;
+            color: #E5E7EB;
+            white-space: nowrap;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: manipulation;
+        }
+
+        .emotion-btn:active, .emotion-btn.active {
+            background: linear-gradient(135deg, #D4AF37 0%, #9A7A2F 100%);
+            color: #111827;
+            border-color: transparent;
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.7);
+        }
+
+        .value-bubbles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+
+        .value-bubble {
+            padding: 20px;
+            background: radial-gradient(circle, #353535 0%, #262626 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 16px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            font-weight: 600;
+            color: #F2F2F2;
+            font-size: 14px;
+            touch-action: manipulation;
+        }
+
+        .value-bubble.active {
+            background: radial-gradient(circle, #D4AF37 0%, #9A7A2F 100%);
+            color: #111827;
+            border-color: #B88932;
+        }
+        
+        .value-bubble:active {
+            transform: scale(0.97);
+        }
+
+        .slider-container {
+            margin: 18px 0;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #3A3A3A;
+            outline: none;
+            accent-color: #D4AF37;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #A3A3A3;
+        }
+
+        .time-block-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .time-block {
+            padding: 12px 8px;
+            background: #262626;
+            border: 1px solid #3A3A3A;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 12px;
+            color: #E5E7EB;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: manipulation;
+        }
+
+        .time-block:active {
+            background: #303030;
+        }
+
+        .time-block.worship {
+            background: linear-gradient(135deg, #D4AF37 0%, #9A7A2F 100%);
+            color: #111827;
+            border-color: #B88932;
+        }
+
+        .time-block.rest {
+            background: #A78BFA;
+            color: #111827;
+            border-color: #7C3AED;
+        }
+
+        .time-block.work {
+            background: #0EA5E9;
+            color: #0F172A;
+            border-color: #0369A1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: radial-gradient(circle at top, #2A2A2A 0%, #151515 60%, #050005 100%);
+            padding: 20px;
+            border-radius: 14px;
+            max-width: 100%;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.95);
+            position: relative;
+            color: #F2F2F2;
+            border: 1px solid rgba(212, 175, 55, 0.6);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #FDE7B0;
+            line-height: 1;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: manipulation;
+        }
+
+        .welcome-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #E5E7EB;
+            margin: 20px 0;
+        }
+
+        .start-btn {
+            margin-top: 16px;
+            width: 100%;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.85);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 16px 14px 20px;
+            margin-top: 20px;
+            color: #E5E7EB;
+            font-size: 12px;
+            background: radial-gradient(circle at top, #111111 0%, #050005 70%, #000 100%);
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.95);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: "";
+            position: absolute;
+            inset: -30px;
+            background: radial-gradient(circle at 20% 0, rgba(212, 175, 55, 0.4) 0, transparent 55%), radial-gradient(circle at 80% 100%, rgba(212, 175, 55, 0.25) 0, transparent 60%);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-line {
+            width: 120px;
+            height: 2px;
+            margin: 10px auto 0;
+            background: linear-gradient(to right, transparent, #FDE7B0, #D4AF37, #8C6A2B, transparent);
+        }
+
+        @media (min-width: 768px) {
+            .container { max-width: 700px; padding: 16px; }
+            .section { padding: 28px 24px 32px; }
+            h2 { font-size: 26px; }
+            h3 { font-size: 18px; }
+            .habit-tracker { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+        }
+
+        @media (min-width: 1024px) {
+            .container { max-width: 900px; padding: 20px; }
+            .section { padding: 40px; }
+            h2 { font-size: 28px; }
+            h3 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <div class="logo-inner">
+                <div class="logo-mark"><span>BD</span></div>
+                <div class="logo-wordmark">
+                    <div class="logo-main">BARRKEH</div>
+                    <div class="logo-sub">DIGIPRODUCTS</div>
+                </div>
+                <div class="logo-tagline">Digital Planners • Checklists • Home • Study</div>
+                <div class="logo-divider"></div>
+            </div>
+        </div>
+
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showSection(event, 'welcome')">Home</div>
+            <div class="nav-tab" onclick="showSection(event, 'vision')">Vision</div>
+            <div class="nav-tab" onclick="showSection(event, 'spiritual')">Spiritual</div>
+            <div class="nav-tab" onclick="showSection(event, 'monthly')">Monthly</div>
+            <div class="nav-tab" onclick="showSection(event, 'weekly')">Weekly</div>
+            <div class="nav-tab" onclick="showSection(event, 'daily')">Daily</div>
+            <div class="nav-tab" onclick="showSection(event, 'career')">Career</div>
+            <div class="nav-tab" onclick="showSection(event, 'home')">Home</div>
+            <div class="nav-tab" onclick="showSection(event, 'relationships')">Relationships</div>
+            <div class="nav-tab" onclick="showSection(event, 'journal')">Journal</div>
+            <div class="nav-tab" onclick="showSection(event, 'audit')">Audit</div>
+        </div>
+
+        <div id="welcome" class="section active">
+            <div class="section-inner">
+                <div class="section-header-deco"><div class="crescent-badge"><svg viewBox="0 0 32 32"><defs><linearGradient id="g1"><stop offset="0%" stop-color="#FDE7B0"/><stop offset="100%" stop-color="#8C6A2B"/></linearGradient></defs><path d="M20 4a10 10 0 1 0 0 24 9 9 0 1 1 0-24z" fill="url(#g1)"/></svg></div></div>
+                <h2>As-salamu alaykum</h2>
+                <p class="welcome-text">Welcome to your Premium Muslimah Interactive Digital Planner by Barrkeh DigiProducts. This sacred space is designed to help you live intentionally and create a life filled with barakah.</p>
+                <button class="start-btn" onclick="showSection(event, 'vision')">Start Your Journey</button>
+            </div>
+        </div>
+
+        <div id="vision" class="section">
+            <div class="section-inner">
+                <h2>My Life Vision</h2>
+                <h3>Who I Am Becoming...</h3>
+                <textarea id="vision_becoming" class="input-field" placeholder="Reflect on the woman you're becoming..."></textarea>
+                <h3>My Spiritual Identity</h3>
+                <textarea id="vision_identity" class="input-field" placeholder="How do you see yourself in relation to Allah?"></textarea>
+                <h3>My Barakah-Driven Purpose</h3>
+                <textarea id="vision_purpose" class="input-field" placeholder="What brings blessing into your life?"></textarea>
+                <h3>My Core Values</h3>
+                <div class="value-bubbles">
+                    <div id="value_faith" class="value-bubble" onclick="toggleValueBubble(this)">Faith & Taqwa</div>
+                    <div id="value_family" class="value-bubble" onclick="toggleValueBubble(this)">Family & Love</div>
+                    <div id="value_knowledge" class="value-bubble" onclick="toggleValueBubble(this)">Knowledge & Growth</div>
+                    <div id="value_service" class="value-bubble" onclick="toggleValueBubble(this)">Service & Giving</div>
+                    <div id="value_balance" class="value-bubble" onclick="toggleValueBubble(this)">Balance & Wellness</div>
+                    <div id="value_beauty" class="value-bubble" onclick="toggleValueBubble(this)">Beauty & Grace</div>
+                </div>
+                <h3>My Success Definition</h3>
+                <textarea id="vision_success" class="input-field" placeholder="What does success mean to you as a Muslimah?"></textarea>
+            </div>
+        </div>
+
+        <div id="spiritual" class="section">
+            <div class="section-inner">
+                <h2>Spiritual Hub</h2>
+                <h3>How are you feeling?</h3>
+                <div class="emotion-buttons">
+                    <button id="emotion_overwhelmed" class="emotion-btn" onclick="showAllahName(this, 'overwhelmed')">Overwhelmed</button>
+                    <button id="emotion_uncertain" class="emotion-btn" onclick="showAllahName(this, 'uncertain')">Uncertain</button>
+                    <button id="emotion_low" class="emotion-btn" onclick="showAllahName(this, 'low')">Low</button>
+                    <button id="emotion_grateful" class="emotion-btn" onclick="showAllahName(this, 'grateful')">Grateful</button>
+                    <button id="emotion_anxious" class="emotion-btn" onclick="showAllahName(this, 'anxious')">Anxious</button>
+                </div>
+                <h3>Salah Tracker</h3>
+                <div class="salah-tracker">
+                    <div id="salah_fajr" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Fajr</div><div style="font-size: 11px;">Dawn</div></div>
+                    <div id="salah_dhuhr" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Dhuhr</div><div style="font-size: 11px;">Noon</div></div>
+                    <div id="salah_asr" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Asr</div><div style="font-size: 11px;">Afternoon</div></div>
+                    <div id="salah_maghrib" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Maghrib</div><div style="font-size: 11px;">Sunset</div></div>
+                    <div id="salah_isha" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Isha</div><div style="font-size: 11px;">Night</div></div>
+                </div>
+                <h3>Daily Dhikr Checklist</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input id="dhikr_subhanallah" type="checkbox"> SubhanAllah (33x)</label>
+                    <label class="checkbox-item"><input id="dhikr_alhamdulillah" type="checkbox"> Alhamdulillah (33x)</label>
+                    <label class="checkbox-item"><input id="dhikr_allahuakbar" type="checkbox"> Allahu Akbar (34x)</label>
+                    <label class="checkbox-item"><input id="dhikr_ayatulkursi" type="checkbox"> Ayatul Kursi</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="monthly" class="section">
+            <div class="section-inner">
+                <h2>Monthly Dashboard</h2>
+                <h3>Month:</h3>
+                <input id="monthly_date" type="month" class="input-field">
+                <h3>Monthly Goals</h3>
+                <textarea id="monthly_spiritual_goals" class="input-field" placeholder="Spiritual goals this month"></textarea>
+                <textarea id="monthly_personal_goals" class="input-field" placeholder="Personal growth goals"></textarea>
+                <textarea id="monthly_career_goals" class="input-field" placeholder="Career/education goals"></textarea>
+            </div>
+        </div>
+
+        <div id="weekly" class="section">
+            <div class="section-inner">
+                <h2>Weekly Overview</h2>
+                <h3>Week of:</h3>
+                <input id="weekly_date" type="date" class="input-field">
+                <h3>Top 3 Priorities</h3>
+                <input id="weekly_p1" class="input-field" placeholder="Priority 1">
+                <input id="weekly_p2" class="input-field" placeholder="Priority 2">
+                <input id="weekly_p3" class="input-field" placeholder="Priority 3">
+                <h3>Weekly Habits</h3>
+                <div class="habit-tracker">
+                    <div id="habit_quran" class="habit-item" onclick="toggleHabit(this)"><div>📖</div><div>Quran</div></div>
+                    <div id="habit_dhikr" class="habit-item" onclick="toggleHabit(this)"><div>📿</div><div>Dhikr</div></div>
+                    <div id="habit_water" class="habit-item" onclick="toggleHabit(this)"><div>💧</div><div>Water</div></div>
+                    <div id="habit_movement" class="habit-item" onclick="toggleHabit(this)"><div>👟</div><div>Movement</div></div>
+                    <div id="habit_learn" class="habit-item" onclick="toggleHabit(this)"><div>📚</div><div>Learn</div></div>
+                    <div id="habit_kindness" class="habit-item" onclick="toggleHabit(this)"><div>💝</div><div>Kindness</div></div>
+                </div>
+                <h3>Time Blocking</h3>
+                <div class="time-block-grid">
+                    <div id="time_5_6" class="time-block" onclick="cycleTimeBlock(this)">5-6</div>
+                    <div id="time_6_7" class="time-block" onclick="cycleTimeBlock(this)">6-7</div>
+                    <div id="time_7_8" class="time-block" onclick="cycleTimeBlock(this)">7-8</div>
+                    <div id="time_8_9" class="time-block" onclick="cycleTimeBlock(this)">8-9</div>
+                    <div id="time_9_10" class="time-block" onclick="cycleTimeBlock(this)">9-10</div>
+                    <div id="time_10_11" class="time-block" onclick="cycleTimeBlock(this)">10-11</div>
+                    <div id="time_11_12" class="time-block" onclick="cycleTimeBlock(this)">11-12</div>
+                    <div id="time_12_1" class="time-block" onclick="cycleTimeBlock(this)">12-1</div>
+                    <div id="time_1_2" class="time-block" onclick="cycleTimeBlock(this)">1-2</div>
+                    <div id="time_2_3" class="time-block" onclick="cycleTimeBlock(this)">2-3</div>
+                    <div id="time_3_4" class="time-block" onclick="cycleTimeBlock(this)">3-4</div>
+                    <div id="time_4_5" class="time-block" onclick="cycleTimeBlock(this)">4-5</div>
+                    <div id="time_5_6_pm" class="time-block" onclick="cycleTimeBlock(this)">5-6</div>
+                    <div id="time_6_7_pm" class="time-block" onclick="cycleTimeBlock(this)">6-7</div>
+                    <div id="time_7_8_pm" class="time-block" onclick="cycleTimeBlock(this)">7-8</div>
+                    <div id="time_8_9_pm" class="time-block" onclick="cycleTimeBlock(this)">8-9</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="daily" class="section">
+            <div class="section-inner">
+                <h2>Daily Planner</h2>
+                <h3>Today's Date</h3>
+                <input id="daily_date" type="date" class="input-field">
+                <h3>Ayah of the Day</h3>
+                <textarea id="daily_ayah" class="input-field" placeholder="Write or reflect on an ayah..."></textarea>
+                <h3>Top 3 Priorities</h3>
+                <input id="daily_p1" class="input-field" placeholder="Priority 1">
+                <input id="daily_p2" class="input-field" placeholder="Priority 2">
+                <input id="daily_p3" class="input-field" placeholder="Priority 3">
+                <h3>Energy Level</h3>
+                <div class="slider-container">
+                    <input id="daily_energy" type="range" min="1" max="10" value="5" class="slider">
+                    <div class="slider-label"><span>Low</span><span>High</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="career" class="section">
+            <div class="section-inner">
+                <h2>Career Growth</h2>
+                <h3>Current Status</h3>
+                <textarea id="career_status" class="input-field" placeholder="Where are you now in your career?"></textarea>
+                <h3>Career Goals (6 Months)</h3>
+                <textarea id="career_goals" class="input-field" placeholder="What goals are you working toward?"></textarea>
+                <h3>Skills I'm Developing</h3>
+                <input id="career_skill1" class="input-field" placeholder="Skill 1">
+                <input id="career_skill2" class="input-field" placeholder="Skill 2">
+                <input id="career_skill3" class="input-field" placeholder="Skill 3">
+            </div>
+        </div>
+
+        <div id="home" class="section">
+            <div class="section-inner">
+                <h2>Home Life</h2>
+                <h3>Creating Peace at Home</h3>
+                <textarea id="home_peace" class="input-field" placeholder="What makes your home feel peaceful?"></textarea>
+                <h3>Home Care Checklist</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input id="home_tidy" type="checkbox"> Morning tidy-up</label>
+                    <label class="checkbox-item"><input id="home_kitchen" type="checkbox"> Kitchen reset</label>
+                    <label class="checkbox-item"><input id="home_laundry" type="checkbox"> Laundry done</label>
+                    <label class="checkbox-item"><input id="home_prayerspace" type="checkbox"> Prayer space ready</label>
+                </div>
+                <h3>Meal Planning</h3>
+                <textarea id="home_mealplan" class="input-field" placeholder="Plan your meals for the week..."></textarea>
+            </div>
+        </div>
+
+        <div id="relationships" class="section">
+            <div class="section-inner">
+                <h2>Relationships & Community</h2>
+                <h3>Duas for Loved Ones</h3>
+                <textarea id="rel_duas" class="input-field" placeholder="Names and duas for people on your heart..."></textarea>
+                <h3>Family Check-In</h3>
+                <textarea id="rel_family" class="input-field" placeholder="How can you strengthen family relationships?"></textarea>
+                <h3>Sisterhood & Friendship</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input id="rel_reachout" type="checkbox"> Reached out to a friend</label>
+                    <label class="checkbox-item"><input id="rel_kindmessage" type="checkbox"> Sent kind message</label>
+                    <label class="checkbox-item"><input id="rel_listen" type="checkbox"> Listened with attention</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="journal" class="section">
+            <div class="section-inner">
+                <h2>Journal</h2>
+                <h3>Date</h3>
+                <input id="journal_date" type="date" class="input-field">
+                <h3>Free Writing Space</h3>
+                <textarea id="journal_free_write" class="input-field" style="min-height: 150px;" placeholder="Your thoughts and feelings..."></textarea>
+                <h3>Gratitude List</h3>
+                <textarea id="journal_gratitude" class="input-field" placeholder="What are you grateful for today?"></textarea>
+            </div>
+        </div>
+
+        <div id="audit" class="section">
+            <div class="section-inner">
+                <h2>Soul Audit</h2>
+                <h3>Month:</h3>
+                <input id="audit_month" type="month" class="input-field">
+                <h3>Spiritual Growth Reflection</h3>
+                <textarea id="audit_spiritual" class="input-field" placeholder="How did you grow spiritually this month?"></textarea>
+                <h3>Wins & Blessings</h3>
+                <textarea id="audit_wins" class="input-field" placeholder="What victories did Allah bless you with?"></textarea>
+                <h3>Challenges & Lessons</h3>
+                <textarea id="audit_lessons" class="input-field" placeholder="What did you learn from difficulties?"></textarea>
+            </div>
+        </div>
+
+        <button class="save-btn" onclick="saveProgress(true)">Save All Progress (Manual Save)</button>
+
+        <div class="footer">
+            <div class="footer-content">
+                <p>Created with love by Barrkeh DigiProducts</p>
+                <p style="margin-top: 8px; font-size: 11px;">May Allah bless your journey and fill your days with barakah.</p>
+                <div class="footer-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="allahModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- Core Functions for Navigation and UI ---
+
+        function showSection(evt, sectionId) {
+            const sections = document.querySelectorAll('.section');
+            const tabs = document.querySelectorAll('.nav-tab');
+            sections.forEach(s => s.classList.remove('active'));
+            tabs.forEach(t => t.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            if (evt && evt.target) evt.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeModal() {
+            document.getElementById('allahModal').classList.remove('active');
+        }
+
+        window.onclick = function(e) {
+            const modal = document.getElementById('allahModal');
+            if (e.target === modal) modal.classList.remove('active');
+        };
+        
+        // --- Interactivity and Save Handlers ---
+
+        function toggleClassAndSave(el, className) {
+            el.classList.toggle(className);
+            saveProgress();
+        }
+
+        function toggleSalah(el) { toggleClassAndSave(el, 'completed'); }
+        function toggleHabit(el) { toggleClassAndSave(el, 'completed'); }
+        function toggleValueBubble(el) { toggleClassAndSave(el, 'active'); }
+
+        function showAllahName(el, emotion) {
+            // Un-toggle all emotion buttons first
+            document.querySelectorAll('.emotion-btn').forEach(btn => btn.classList.remove('active'));
+            el.classList.add('active');
+            
+            const names = {
+                'overwhelmed': '<h2 style="color:#FDE7B0;">Al-Hakim - The All-Wise</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">When overwhelmed, remember Allah is Al-Hakim. Everything happening in your life has divine wisdom behind it, even when you cannot see it yet.</p>',
+                'uncertain': '<h2 style="color:#FDE7B0;">Al-Hadi - The Guide</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">When uncertain, Allah is Al-Hadi, The Guide. He will illuminate your path when you turn to Him sincerely.</p>',
+                'low': '<h2 style="color:#FDE7B0;">Al-Lateef - The Most Gentle</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">When low, Allah is Al-Lateef, caring for you with infinite tenderness and subtle mercy.</p>',
+                'grateful': '<h2 style="color:#FDE7B0;">Ash-Shakur - The Appreciative</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Your gratitude pleases Allah, who is Ash-Shakur and multiplies the rewards of the thankful.</p>',
+                'anxious': '<h2 style="color:#FDE7B0;">As-Salam - The Source of Peace</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">When anxious, remember As-Salam, The Source of All Peace. Turn to Him and find tranquility.</p>'
+            };
+            document.getElementById('modalBody').innerHTML = names[emotion];
+            document.getElementById('allahModal').classList.add('active');
+            saveProgress(); // Save the active emotion button state
+        }
+        
+        const TIME_BLOCK_CLASSES = ['worship', 'work', 'rest'];
+        
+        function cycleTimeBlock(el) {
+            const currentClass = TIME_BLOCK_CLASSES.find(cls => el.classList.contains(cls));
+            el.classList.remove(...TIME_BLOCK_CLASSES);
+
+            if (!currentClass) {
+                // Not set, start with worship
+                el.classList.add(TIME_BLOCK_CLASSES[0]);
+            } else {
+                const currentIndex = TIME_BLOCK_CLASSES.indexOf(currentClass);
+                const nextIndex = (currentIndex + 1) % (TIME_BLOCK_CLASSES.length + 1); // +1 to include "un-set" state
+
+                if (nextIndex < TIME_BLOCK_CLASSES.length) {
+                    el.classList.add(TIME_BLOCK_CLASSES[nextIndex]);
+                }
+                // If nextIndex is TIME_BLOCK_CLASSES.length, it clears all classes, which is the un-set state.
+            }
+            saveProgress();
+        }
+
+
+        // --- Local Storage Implementation (The Fix) ---
+
+        /**
+         * Saves the state of all input fields, checkboxes, and toggles to Local Storage.
+         * @param {boolean} isManual - True if triggered by the manual save button.
+         */
+        function saveProgress(isManual = false) {
+            const savableElements = document.querySelectorAll('.input-field[id], input[type="checkbox"][id], .salah-item[id], .habit-item[id], .time-block[id], .emotion-btn[id], .value-bubble[id]');
+            const data = {};
+
+            savableElements.forEach(el => {
+                const id = el.id;
+
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    if (el.type === 'checkbox') {
+                        data[id] = el.checked;
+                    } else if (el.type === 'range') {
+                         data[id] = el.value;
+                    } else {
+                        data[id] = el.value;
+                    }
+                } else if (el.classList.contains('salah-item') || el.classList.contains('habit-item') || el.classList.contains('value-bubble')) {
+                    data[id] = el.classList.contains('completed') || el.classList.contains('active');
+                } else if (el.classList.contains('time-block')) {
+                    data[id] = TIME_BLOCK_CLASSES.find(cls => el.classList.contains(cls)) || ''; // Save the class name or empty string
+                } else if (el.classList.contains('emotion-btn')) {
+                    data[id] = el.classList.contains('active');
+                }
+            });
+
+            try {
+                localStorage.setItem('barrkehPlannerData', JSON.stringify(data));
+                if (isManual) {
+                    const button = document.querySelector('.save-btn');
+                    const originalText = button.textContent;
+                    button.textContent = 'Progress Saved! (✔)';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 1500);
+                }
+            } catch (e) {
+                console.error("Could not save to Local Storage:", e);
+                alert("Error: Your browser could not save the planner data. Please ensure local storage is enabled.");
+            }
+        }
+
+        /**
+         * Loads the state from Local Storage and applies it to the corresponding elements.
+         */
+        function loadProgress() {
+            const savedData = localStorage.getItem('barrkehPlannerData');
+            if (!savedData) return;
+
+            const data = JSON.parse(savedData);
+
+            for (const id in data) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+
+                const value = data[id];
+
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    if (el.type === 'checkbox') {
+                        el.checked = value;
+                    } else if (el.type === 'range') {
+                         el.value = value;
+                    } else {
+                        el.value = value;
+                    }
+                } else if (el.classList.contains('salah-item') || el.classList.contains('habit-item') || el.classList.contains('value-bubble')) {
+                    if (value) {
+                        const cls = el.classList.contains('value-bubble') ? 'active' : 'completed';
+                        el.classList.add(cls);
+                    }
+                } else if (el.classList.contains('time-block')) {
+                    if (value) {
+                        el.classList.add(value);
+                    }
+                } else if (el.classList.contains('emotion-btn')) {
+                    if (value) {
+                        el.classList.add('active');
+                    }
+                }
+            }
+        }
+
+        /**
+         * Initializes the planner by loading data and setting up auto-save listeners.
+         */
+        function initializePlanner() {
+            loadProgress();
+
+            // Set up auto-save listeners for text/date/range inputs
+            const inputElements = document.querySelectorAll('.input-field[id]');
+            inputElements.forEach(el => {
+                // Use 'change' for checkboxes and sliders (range) for performance
+                // Use 'input' for textareas and text inputs for real-time saving
+                const eventType = (el.type === 'checkbox' || el.type === 'range' || el.tagName === 'SELECT') ? 'change' : 'input';
+                el.addEventListener(eventType, () => saveProgress());
+            });
+        }
+
+        // Run initialization when the page loads
+        window.onload = initializePlanner;
+
+    </script>
+</body>
+</html>
