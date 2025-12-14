@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Premium Muslimah Planner - Barrkeh DigiProducts</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        /* --- GLOBAL STYLES & THEME --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top, #2A2A2A 0%, #111111 55%, #050005 100%);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: radial-gradient(circle at top, #2A2A2A 0%, #111111 55%, #050005 100%);
+            color: #F2F2F2;
+            overflow-x: hidden;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 12px;
+            min-height: 100vh;
+        }
+
+        /* --- LOGO AND HEADER --- */
+        .logo-section {
+            position: relative;
+            text-align: center;
+            padding: 24px 16px 20px;
+            background: radial-gradient(circle at top, #1C1C1C 0%, #050005 60%, #000 100%);
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75);
+            margin-bottom: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+        }
+
+        .logo-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 10% 0%, rgba(253, 224, 171, 0.15) 0, transparent 45%), radial-gradient(circle at 90% 10%, rgba(248, 250, 252, 0.06) 0, transparent 50%), radial-gradient(circle at 50% 120%, rgba(212, 175, 55, 0.15) 0, transparent 55%);
+            pointer-events: none;
+            mix-blend-mode: screen;
+            opacity: 0.9;
+        }
+
+        .logo-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(from 220deg, #F9E7B5, #C9A961, #8C6A2B, #F5E2A4, #C9A961);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.75), 0 0 0 2px rgba(0, 0, 0, 0.9);
+            flex-shrink: 0;
+        }
+
+        .logo-mark span {
+            font-family: "Times New Roman", serif;
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            color: #111827;
+        }
+
+        .logo-main {
+            font-size: 18px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #F9FAFB;
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FDE68A;
+        }
+
+        /* --- NAVIGATION TABS --- */
+        .nav-tabs {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            background: radial-gradient(circle at top, #141414 0%, #050005 70%, #000 100%);
+            padding: 10px 10px 12px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-tab {
+            padding: 8px 12px;
+            background: #111111;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 11px;
+            font-weight: 600;
+            color: #E5E7EB;
+            border: 1px solid rgba(148, 163, 184, 0.55);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            touch-action: manipulation;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, #D4AF37 0%, #B88932 100%);
+            color: #111827;
+            border-color: transparent;
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.85);
+        }
+
+        /* --- SECTION BASE STYLES --- */
+        .section {
+            position: relative;
+            display: none;
+            background: radial-gradient(circle at top, #2A2A2A 0%, #141414 55%, #050005 100%);
+            padding: 20px 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
+            animation: fadeIn 0.4s ease;
+            color: #F2F2F2;
+            overflow: hidden;
+            border: 1px solid rgba(55, 65, 81, 0.7);
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        h2 {
+            color: #FDE7B0;
+            font-size: 22px;
+            margin-bottom: 14px;
+            border-bottom: 1.5px solid rgba(184, 137, 50, 0.6);
+            padding-bottom: 8px;
+            word-break: break-word;
+        }
+
+        h3 {
+            color: #E5E7EB;
+            font-size: 16px;
+            margin: 18px 0 10px 0;
+        }
+
+        p {
+            color: #CFCFCF;
+            font-size: 14px;
+        }
+        
+        /* Updated welcome text font size */
+        .welcome-text {
+            margin-bottom: 20px; 
+            font-size: 15px; /* Confirmed and set to 15px */
+            color: #F9FAFB; 
+            line-height: 1.8;
+        }
+
+        /* --- INPUT FIELDS --- */
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #4A4A4A;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Georgia', serif;
+            background: #353535;
+            color: #F5F5F5;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            -webkit-appearance: none;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.4);
+            background: #3F3F3F;
+        }
+
+        textarea.input-field {
+            min-height: 100px;
+            resize: vertical;
+            font-size: 16px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn, .start-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #D4AF37 0%, #9A7A2F 100%);
+            color: #111827;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 5px 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: manipulation;
+        }
+        
+        /* PDF Export button */
+        .pdf-btn {
+            background: linear-gradient(135deg, #B88932 0%, #8C6A2B 100%); 
+            color: #F9FAFB;
+            border: 1px solid #6E5325;
+        }
+
+        /* Start a New Day Button (Kept for other sections if needed) */
+        .reset-day-btn {
+            background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); /* Teal/Turquoise gradient */
+            color: #F9FAFB; 
+            border: 1px solid #0E7490;
+            box-shadow: 0 6px 16px rgba(6, 182, 212, 0.7);
+        }
+
+        .start-btn {
+            margin-top: 16px;
+            width: 100%;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.85);
+        }
+        
+        .barakah-btn {
+            background: linear-gradient(135deg, #FDE7B0 0%, #D4AF37 100%);
+            color: #111827;
+            border: 1px solid #B88932;
+        }
+        
+        /* --- CHECKLISTS & TRACKERS --- */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: #262626;
+            border-radius: 10px;
+            border: 1px solid #3A3A3A;
+            min-height: 44px;
+            gap: 10px;
+            touch-action: manipulation;
+        }
+
+        .salah-tracker, .habit-tracker {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .salah-item, .habit-item {
+            padding: 16px 12px;
+            background: #262626;
+            border: 1px solid #3A3A3A;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #F2F2F2;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .salah-item.completed, .habit-item.completed, .emotion-btn.active {
+            background: linear-gradient(135deg, #D4AF37 0%, #9A7A2F 100%);
+            color: #111827;
+            border-color: #B88932;
+        }
+        
+        /* Core Values Tabs */
+        .value-bubbles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0 20px 0;
+        }
+
+        .value-bubble {
+            padding: 8px 14px;
+            background: #262626;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 13px;
+            color: #E5E7EB;
+            border: 1px solid #4A4A4A;
+            white-space: nowrap;
+            flex-shrink: 0;
+            touch-action: manipulation;
+        }
+
+        .value-bubble.completed {
+            background: linear-gradient(135deg, #FDE7B0 0%, #D4AF37 100%);
+            color: #111827;
+            border-color: #B88932;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* --- SPIRITUAL PROGRESS & BARAKAH SCORE --- */
+        .progress-container {
+            margin: 20px 0 10px;
+            background: #353535;
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid #4A4A4A;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 16px;
+            background-color: #555;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #D4AF37, #FDE7B0);
+            transition: width 0.5s ease-in-out;
+            text-align: center;
+            color: #111827;
+            font-size: 10px;
+            font-weight: bold;
+            line-height: 16px;
+        }
+        
+        /* Footer Alignment */
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+            color: #A3A3A3;
+            font-size: 12px;
+        }
+
+        /* Modal visibility */
+        .modal {
+            display: none; 
+        }
+        .modal.active {
+            display: flex !important; 
+        }
+
+        /* General PDF styles (keep them clear for print) */
+        .pdf-export-content {
+            padding: 0; 
+            background: transparent; 
+            color: inherit; 
+            border-radius: 0;
+            box-shadow: none;
+        }
+        
+        /* Time Blocking Styles for Weekly Page */
+        .time-block-grid .time-block {
+            padding: 10px 5px;
+            text-align: center;
+            border-radius: 8px;
+            background: #262626;
+            color: #E5E7EB;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #3A3A3A;
+            min-height: 40px;
+        }
+        
+        .time-block.worship { background: #3c2a0d; border-color: #D4AF37; color: #FDE7B0; }
+        .time-block.work { background: #0c333f; border-color: #0EA5E9; color: #67E8F9; }
+        .time-block.rest { background: #2f274a; border-color: #A78BFA; color: #DDD6FE; }
+        .time-block span { display: block; font-size: 10px; font-weight: 600; margin-top: 3px; }
+
+    </style>
+</head>
+<body onload="loadData()">
+    <div class="container">
+        <div class="logo-section">
+            <div class="logo-inner">
+                <div class="logo-mark"><span>BD</span></div>
+                <div class="logo-wordmark">
+                    <div class="logo-main">BARRKEH</div>
+                    <div class="logo-sub">DIGIPRODUCTS</div>
+                </div>
+                <div class="logo-tagline">Digital Planners • Checklists • Home • Study</div>
+                <div class="logo-divider"></div>
+            </div>
+        </div>
+
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showSection(event, 'welcome')">Home</div>
+            <div class="nav-tab" onclick="showSection(event, 'vision')">Vision</div>
+            <div class="nav-tab" onclick="showSection(event, 'spiritual')">Spiritual</div>
+            <div class="nav-tab" onclick="showSection(event, 'weekly_challenge')">Weekly Challenge</div> 
+            <div class="nav-tab" onclick="lockedSection()">Daily Duas</div>
+            <div class="nav-tab" onclick="showSection(event, 'daily')">Daily</div>
+            <div class="nav-tab" onclick="showSection(event, 'weekly')">Weekly</div>
+            <div class="nav-tab" onclick="showSection(event, 'monthly')">Monthly</div>
+            <div class="nav-tab" onclick="showSection(event, 'career')">Career</div>
+            <div class="nav-tab" onclick="showSection(event, 'home life')">Home Life</div>
+            <div class="nav-tab" onclick="lockedSection()">Relationships</div>
+            <div class="nav-tab" onclick="lockedSection()">Journal</div>
+            <div class="nav-tab" onclick="lockedSection()">Audit</div>
+            <div class="nav-tab" onclick="showSection(event, 'upgrade')">Upgrade</div>
+        </div>
+
+        <div id="welcome" class="section active">
+            <div class="section-inner">
+                <div class="section-header-deco"><div class="crescent-badge" style="width: 32px; height: 32px; border-radius: 999px; background: conic-gradient(from 210deg, #FDE7B0, #D4AF37, #8C6A2B, #FBE3A2, #D4AF37); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 2px #050005, 0 6px 16px rgba(212, 175, 55, 0.9); flex-shrink: 0;"><svg viewBox="0 0 32 32" style="width: 18px; height: 18px;"><defs><linearGradient id="g1"><stop offset="0%" stop-color="#FDE7B0"/><stop offset="100%" stop-color="#8C6A2B"/></linearGradient></defs><path d="M20 4a10 10 0 1 0 0 24 9 9 0 1 1 0-24z" fill="url(#g1)"/></svg></div></div>
+                
+                <p id="currentDateDisplay" style="font-size: 16px; color: #D4AF37; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;"></p>
+                
+                <h2>As-salamu alaykum Ukhti</h2>
+                
+                <p class="welcome-text">Welcome to your Premium Muslimah Interactive Digital Planner by Barrkeh DigiProducts. This sacred space is designed to help you live intentionally and create a life filled with barakah. **We pray this tool is a means of greater taqwa and productivity for you. 💕**</p>
+                
+                <button class="btn barakah-btn" style="margin: 10px 0 15px 0; padding: 8px 16px; font-size: 12px; min-height: 36px;" onclick="showAllahName('barakahDua')">✨ Daily Barakah Prayer</button>
+
+
+                <div id="barakahScoreWrapper" style="display:flex; justify-content:space-between; align-items:center; margin-top:16px; margin-bottom: 20px; padding: 12px; background: rgba(212, 175, 55, 0.1); border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                    <div style="font-size: 14px; color: #FDE7B0; font-weight: 600;">YOUR DAILY BARAKAH SCORE (out of 9)</div>
+                    <div id="barakahScoreDisplay" style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(145deg, #FDE7B0, #D4AF37); color: #111827; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);">0</div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="padding: 16px; background: rgba(0, 100, 100, 0.1); border-radius: 12px; border: 1px solid #0EA5E9; text-align: center;">
+                        <p style="color: #0EA5E9; font-style: italic; font-size: 14px; margin-bottom: 8px; font-weight: 600;">Coming Soon! Don't miss the launch!</p>
+                        <div style="font-size: 16px; font-weight: bold; color: #F9FAFB;">🌙 The Barrkeh Ramadan Planner 2026 🕋</div>
+                        <p style="font-size: 12px; color: #CFCFCF; margin-top: 5px;">Your essential guide for a deeper, more productive Ramadan.</p>
+                    </div>
+
+                    <div style="padding: 16px; background: rgba(253, 231, 176, 0.1); border-radius: 12px; border: 1px solid #D4AF37; text-align: center;">
+                        <p style="color: #FDE7B0; font-style: italic; font-size: 14px; margin-bottom: 8px;">Your Daily Focus:</p>
+                        <div id="dailyQuote" style="font-size: 16px; font-weight: bold; color: #F9FAFB;"></div>
+                        <button class="btn" style="margin-top: 10px; padding: 8px 16px;" onclick="loadDailyQuote()">New Focus</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="weekly_challenge" class="section">
+            <div class="section-inner">
+                <h2>Asma ul Husna Weekly Challenge</h2>
+                <div id="weeklyChallengeContent">
+                    <p style="text-align: center; color:#ccc;">Loading your weekly reflection...</p>
+                </div>
+                <button class="btn" style="margin-top: 20px; width: 100%;" onclick="saveAndConfirm('global')">Save Reflection</button>
+                <button class="btn pdf-btn" style="margin-top: 10px; width: 100%;" onclick="prepareSectionForPDF('weekly_challenge')">Export as PDF</button>
+            </div>
+        </div>
+
+        <div id="vision" class="section">
+            <div class="section-inner">
+                <div id="visionContent" class="pdf-export-content">
+                    <h2>My Life Vision</h2>
+                    <h3>Who I Am Becoming...</h3>
+                    <textarea id="vision_becoming" class="input-field" placeholder="Reflect on the woman you're becoming..." oninput="saveData('global')"></textarea>
+                    <h3>My Spiritual Identity</h3>
+                    <textarea id="vision_spiritual" class="input-field" placeholder="How do you see yourself in relation to Allah?" oninput="saveData('global')"></textarea>
+                    <h3>My Barakah-Driven Purpose</h3>
+                    <textarea id="vision_purpose" class="input-field" placeholder="What brings blessing into your life?" oninput="saveData('global')"></textarea>
+                    <h3>My Core Values</h3>
+                    <div class="value-bubbles" id="valueBubbles">
+                        <div id="value_faith" class="value-bubble" onclick="toggleValue(this)">Faith & Taqwa</div>
+                        <div id="value_family" class="value-bubble" onclick="toggleValue(this)">Family & Love</div>
+                        <div id="value_knowledge" class="value-bubble" onclick="toggleValue(this)">Knowledge & Growth</div>
+                        <div id="value_service" class="value-bubble" onclick="toggleValue(this)">Service & Giving</div>
+                        <div id="value_balance" class="value-bubble" onclick="toggleValue(this)">Balance & Wellness</div>
+                        <div id="value_beauty" class="value-bubble" onclick="toggleValue(this)">Beauty & Grace</div>
+                    </div>
+                    <h3>My Success Definition</h3>
+                    <textarea id="vision_success" class="input-field" placeholder="What does success mean to you as a Muslimah?" oninput="saveData('global')"></textarea>
+                </div>
+                <button class="btn" style="margin-top: 20px; width: 100%;" onclick="saveAndConfirm('global')">Save All Progress</button>
+                <button class="btn pdf-btn" style="margin-top: 10px; width: 100%;" onclick="prepareSectionForPDF('vision')">Export as PDF</button>
+            </div>
+        </div>
+
+        <div id="spiritual" class="section">
+            <div class="section-inner">
+                <h2>Spiritual Hub</h2>
+                <div class="progress-container">
+                    <h3 style="margin-top: 0; color:#FDE7B0;">Today's Spiritual Progress</h3>
+                    <div class="progress-bar">
+                        <div id="spiritualProgressBar" class="progress-fill">0%</div>
+                    </div>
+                    <p id="progressText" class="progress-text">0/9 items completed.</p>
+                </div>
+
+                <h3>How are you feeling? (Tawakkul Prompts)</h3>
+                <div class="emotion-buttons" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0;">
+                    <button class="emotion-btn" style="padding: 10px 14px; background: #262626; border: 1px solid #3A3A3A; border-radius: 999px; cursor: pointer; transition: all 0.25s ease; font-size: 13px; color: #E5E7EB; white-space: nowrap; min-height: 40px; display: flex; align-items: center; justify-content: center; touch-action: manipulation;" onclick="showAllahName('overwhelmed')">Overwhelmed</button>
+                    <button class="emotion-btn" style="padding: 10px 14px; background: #262626; border: 1px solid #3A3A3A; border-radius: 999px; cursor: pointer; transition: all 0.25s ease; font-size: 13px; color: #E5E7EB; white-space: nowrap; min-height: 40px; display: flex; align-items: center; justify-content: center; touch-action: manipulation;" onclick="showAllahName('uncertain')">Uncertain</button>
+                    <button class="emotion-btn" style="padding: 10px 14px; background: #262626; border: 1px solid #3A3A3A; border-radius: 999px; cursor: pointer; transition: all 0.25s ease; font-size: 13px; color: #E5E7EB; white-space: nowrap; min-height: 40px; display: flex; align-items: center; justify-content: center; touch-action: manipulation;" onclick="showAllahName('low')">Low</button>
+                    <button class="emotion-btn" style="padding: 10px 14px; background: #262626; border: 1px solid #3A3A3A; border-radius: 999px; cursor: pointer; transition: all 0.25s ease; font-size: 13px; color: #E5E7EB; white-space: nowrap; min-height: 40px; display: flex; align-items: center; justify-content: center; touch-action: manipulation;" onclick="showAllahName('grateful')">Grateful</button>
+                    <button class="emotion-btn" style="padding: 10px 14px; background: #262626; border: 1px solid #3A3A3A; border-radius: 999px; cursor: pointer; transition: all 0.25s ease; font-size: 13px; color: #E5E7EB; white-space: nowrap; min-height: 40px; display: flex; align-items: center; justify-content: center; touch-action: manipulation;" onclick="showAllahName('anxious')">Anxious</button>
+                </div>
+                <h3>Salah Tracker</h3>
+                <div class="salah-tracker" id="salahTracker">
+                    <div id="salah_fajr" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Fajr</div><div style="font-size: 11px;">Dawn</div></div>
+                    <div id="salah_dhuhr" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Dhuhr</div><div style="font-size: 11px;">Noon</div></div>
+                    <div id="salah_asr" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Asr</div><div style="font-size: 11px;">Afternoon</div></div>
+                    <div id="salah_maghrib" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Maghrib</div><div style="font-size: 11px;">Sunset</div></div>
+                    <div id="salah_isha" class="salah-item" onclick="toggleSalah(this)"><div style="font-weight: bold;">Isha</div><div style="font-size: 11px;">Night</div></div>
+                </div>
+                <h3>Daily Dhikr Checklist</h3>
+                <div class="checkbox-group" id="dhikrChecklist">
+                    <label class="checkbox-item"><input type="checkbox" id="dhikr_subhanallah" onclick="toggleDhikr(this)"> SubhanAllah (33x)</label>
+                    <label class="checkbox-item"><input type="checkbox" id="dhikr_alhamdulillah" onclick="toggleDhikr(this)"> Alhamdulillah (33x)</label>
+                    <label class="checkbox-item"><input type="checkbox" id="dhikr_allahuakbar" onclick="toggleDhikr(this)"> Allahu Akbar (34x)</label>
+                    <label class="checkbox-item"><input type="checkbox" id="dhikr_ayatulkursi" onclick="toggleDhikr(this)"> Ayatul Kursi</label>
+                </div>
+                <button class="btn" style="margin-top: 20px; width: 100%;" onclick="saveAndConfirm('daily')">Save All Progress</button>
+            </div>
+        </div>
+
+        <div id="daily" class="section">
+            <div class="section-inner">
+                <div id="dailyContent" class="pdf-export-content">
+                    <h2>Daily Planner</h2>
+                    <h3>Today's Date</h3>
+                    <input type="date" id="daily_date" class="input-field" onchange="handleDateChange('daily')">
+                    <h3>Ayah of the Day</h3>
+                    <textarea id="daily_ayah" class="input-field" placeholder="Write or reflect on an ayah..." oninput="saveData('daily')"></textarea>
+                    <h3>Top 3 Priorities</h3>
+                    <input id="daily_p1" class="input-field" placeholder="Priority 1" oninput="saveData('daily')">
+                    <input id="daily_p2" class="input-field" placeholder="Priority 2" oninput="saveData('daily')">
+                    <input id="daily_p3" class="input-field" placeholder="Priority 3" oninput="saveData('daily')">
+                    <h3>Energy Level</h3>
+                    <div class="slider-container">
+                        <input type="range" min="1" max="10" value="5" class="slider" id="daily_energy" oninput="saveData('daily')">
+                        <div class="slider-label" style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: #A3A3A3;"><span>Low</span><span>High</span></div>
+                    </div>
+                </div>
+                
+                <button class="btn" style="margin-top: 20px; width: 100%;" onclick="saveAndConfirm('daily')">Save All Progress</button>
+                <button class="btn pdf-btn" style="margin-top: 10px; width: 100%;" onclick="exportDailyPlannerAndSpiritual()">Export Full Day PDF</button>
+            </div>
+        </div>
+        
+        <div id="weekly" class="section">
+            <div class="section-inner">
+                <div id="weeklyContent" class="pdf-export-content">
+                    <h2>Weekly Overview</h2>
+                    <h3>Week of:</h3>
+                    <input type="date" id="weekly_date" class="input-field" onchange="handleDateChange('weekly')">
+                    <h3>Top 3 Priorities</h3>
+                    <input id="weekly_p1" class="input-field" placeholder="Priority 1" oninput="saveData('weekly')">
+                    <input id="weekly_p2" class="input-field" placeholder="Priority 2" oninput="saveData('weekly')">
+                    <input id="weekly_p3" class="input-field" placeholder="Priority 3" oninput="saveData('weekly')">
+                    <h3>Weekly Habits</h3>
+                    <div class="habit-tracker" id="habitTracker">
+                        <div id="habit_quran" class="habit-item" onclick="toggleHabit(this)"><div>📖</div><div>Quran</div></div>
+                        <div id="habit_dhikr" class="habit-item" onclick="toggleHabit(this)"><div>📿</div><div>Dhikr</div></div>
+                        <div id="habit_water" class="habit-item" onclick="toggleHabit(this)"><div>💧</div><div>Water</div></div>
+                        <div id="habit_movement" class="habit-item" onclick="toggleHabit(this)"><div>👟</div><div>Movement</div></div>
+                        <div id="habit_learn" class="habit-item" onclick="toggleHabit(this)"><div>📚</div><div>Learn</div></div>
+                        <div id="habit_kindness" class="habit-item" onclick="toggleHabit(this)"><div>💝</div><div>Kindness</div></div>
+                    </div>
+                    
+                    <h3>Time Blocking (Worship, Work, Rest)</h3>
+                    <div style="display:flex; justify-content:space-around; margin: 10px 0; font-size:12px; color: #E5E7EB; padding: 5px 0; border-radius: 8px; background: #1C1C1C;">
+                        <span style="color: #FDE7B0;">• Worship</span>
+                        <span style="color: #0EA5E9;">• Work</span>
+                        <span style="color: #A78BFA;">• Rest</span>
+                    </div>
+                    
+                    <div class="time-block-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); gap: 8px; margin: 16px 0;">
+                        <div id="time_block_5am" class="time-block" onclick="cycleTimeBlock(this)">5-6 am</div>
+                        <div id="time_block_6am" class="time-block" onclick="cycleTimeBlock(this)">6-7 am</div>
+                        <div id="time_block_7am" class="time-block" onclick="cycleTimeBlock(this)">7-8 am</div>
+                        <div id="time_block_8am" class="time-block" onclick="cycleTimeBlock(this)">8-9 am</div>
+                        <div id="time_block_9am" class="time-block" onclick="cycleTimeBlock(this)">9-10 am</div>
+                        <div id="time_block_10am" class="time-block" onclick="cycleTimeBlock(this)">10-11 am</div>
+                        <div id="time_block_11am" class="time-block" onclick="cycleTimeBlock(this)">11-12 pm</div>
+                        <div id="time_block_12pm" class="time-block" onclick="cycleTimeBlock(this)">12-1 pm</div>
+                        <div id="time_block_1pm" class="time-block" onclick="cycleTimeBlock(this)">1-2 pm</div>
+                        <div id="time_block_2pm" class="time-block" onclick="cycleTimeBlock(this)">2-3 pm</div>
+                        <div id="time_block_3pm" class="time-block" onclick="cycleTimeBlock(this)">3-4 pm</div>
+                        <div id="time_block_4pm" class="time-block" onclick="cycleTimeBlock(this)">4-5 pm</div>
+                        <div id="time_block_5pm" class="time-block" onclick="cycleTimeBlock(this)">5-6 pm</div>
+                        <div id="time_block_6pm" class="time-block" onclick="cycleTimeBlock(this)">6-7 pm</div>
+                        <div id="time_block_7pm" class="time-block" onclick="cycleTimeBlock(this)">7-8 pm</div>
+                        <div id="time_block_8pm" class="time-block" onclick="cycleTimeBlock(this)">8-9 pm</div>
+                    </div>
+                </div>
+                <button class="btn" style="margin-top: 20px; width: 100%;" onclick="saveAndConfirm('weekly')">Save All Progress</button>
+                <button class="btn pdf-btn" style="margin-top: 10px; width: 100%;" onclick="prepareSectionForPDF('weekly')">Export as PDF</button>
+            </div>
+        </div>
+        
+        <div id="monthly" class="section">
+            <div class="section-inner">
+                <div id="monthlyContent" class="pdf-export-content">
+                    <h2>Monthly Dashboard</h2>
+                    <h3>Month:</h3>
+                    <input type="month" id="monthly_month" class="input-field" onchange="saveData('global')">
+                    <h3>Monthly Goals</h3>
+                    <textarea id="monthly_goals_spiritual" class="input-field" placeholder="Spiritual goals this month" oninput="saveData('global')"></textarea>
+                    <textarea id="monthly_goals_personal" class="input-field" placeholder="Personal growth goals" oninput="saveData('global')"></textarea>
+                    <textarea id="monthly_goals_career" class="input-field" placeholder="Career/education goals" oninput="saveData('global')"></textarea>
+                </div>
+                <button class="btn" style="margin-top: 20px; width: 100%;" onclick="saveAndConfirm('global')">Save All Progress</button>
+                <button class="btn pdf-btn" style="margin-top: 10px; width: 100%;" onclick="prepareSectionForPDF('monthly')">Export as PDF</button>
+            </div>
+        </div>
+        
+        <div id="career" class="section">
+            <div class="section-inner">
+                <div id="careerContent" class="pdf-export-content">
+                    <h2>Career Growth</h2>
+                    <h3>Current Status</h3>
+                    <textarea id="career_status" class="input-field" placeholder="Where are you now in your career?" oninput="saveData('global')"></textarea>
+                    <h3>Career Goals (6 Months)</h3>
+                    <textarea id="career_goals" class="input-field" placeholder="What goals are you working toward?" oninput="saveData('global')"></textarea>
+                    <h3>Skills I'm Developing</h3>
+                    <input id="career_s1" class="input-field" placeholder="Skill 1" oninput="saveData('global')">
+                    <input id="career_s2" class="input-field" placeholder="Skill 2" oninput="saveData('global')">
+                    <input id="career_s3" class="input-field" placeholder="Skill 3" oninput="saveData('global')">
+                </div>
+                <button class="btn" style="margin-top: 20px; width: 100%;" onclick="saveAndConfirm('global')">Save All Progress</button>
+            </div>
+        </div>
+
+        <div id="home life" class="section">
+            <div class="section-inner">
+                <div id="homeLifeContent" class="pdf-export-content">
+                    <h2>Home Life</h2>
+                    <h3>Creating Peace at Home</h3>
+                    <textarea id="home_peace" class="input-field" placeholder="What makes your home feel peaceful?" oninput="saveData('global')"></textarea>
+                    <h3>Home Care Checklist</h3>
+                    <div class="checkbox-group" id="homeChecklist">
+                        <label class="checkbox-item"><input type="checkbox" id="home_tidy" onclick="saveData('global')"> Morning tidy-up</label>
+                        <label class="checkbox-item"><input type="checkbox" id="home_kitchen" onclick="saveData('global')"> Kitchen reset</label>
+                        <label class="checkbox-item"><input type="checkbox" id="home_laundry" onclick="saveData('global')"> Laundry done</label>
+                        <label class="checkbox-item"><input type="checkbox" id="home_prayerspace" onclick="saveData('global')"> Prayer space ready</label>
+                    </div>
+                    <h3>Meal Planning</h3>
+                    <textarea id="home_mealplan" class="input-field" placeholder="Plan your meals for the week..." oninput="saveData('global')"></textarea>
+                </div>
+                <button class="btn" style="margin-top: 20px; width: 100%;" onclick="saveAndConfirm('global')">Save All Progress</button>
+            </div>
+        </div>
+        
+        <div id="upgrade" class="section">
+            <div class="section-inner">
+                <h2>Upgrade to Premium</h2>
+                <p style="margin-top:10px; line-height:1.7;">
+                    Salaam Ukhti, unlock the full interactive Barrkeh Planner with:
+                </p>
+                <div style="margin-top:16px; line-height:2.0; font-size:15px; color: #FDE7B0;">
+                    ✨ **Moon Cycle Ibadah Tracker (A Muslimah Exclusive)**<br>
+                    💖 **Marital Communication Duas & Prompts**<br>
+                    📘 Deep Journaling Tools<br>
+                    🛠️ Complete Audit System & Financial Tracker<br>
+                    🌍 Advanced Spiritual Dashboards & Qibla Finder<br>
+                    🎨 Personalisation, Themes & More Language Options<br>
+                    <span style="font-weight: bold; margin-top: 10px; display: block;">...and complete access to the Barrkeh Ramadan Planner 2026! 🌙</span>
+                </div>
+                <p style="margin-top:20px; opacity:0.85;">
+                    Jazakillahu khayran for supporting a Muslimah-owned brand.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-content" style="position: relative; z-index: 1;">
+                <p>Created with love by Barrkeh DigiProducts</p>
+                <p style="margin-top: 8px; font-size: 11px;">May Allah bless your journey and fill your days with barakah.</p>
+                <div class="footer-line" style="width: 120px; height: 2px; margin: 10px auto 0; background: linear-gradient(to right, transparent, #FDE7B0, #D4AF37, #8C6A2B, transparent);"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="allahModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1000; align-items: center; justify-content: center; padding: 12px;">
+        <div class="modal-content" style="background: radial-gradient(circle at top, #2A2A2A 0%, #151515 60%, #050005 100%); padding: 20px; border-radius: 14px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; -webkit-overflow-scrolling: touch; box-shadow: 0 16px 50px rgba(0, 0, 0, 0.95); position: relative; color: #F2F2F2; border: 1px solid rgba(212, 175, 55, 0.6);">
+            <span class="close-modal" onclick="closeModal()" style="position: absolute; top: 12px; right: 14px; font-size: 24px; cursor: pointer; color: #FDE7B0; line-height: 1; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; touch-action: manipulation;">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div id="premiumModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1000; align-items: center; justify-content: center; padding: 12px;">
+        <div class="modal-content" style="background: radial-gradient(circle at top, #2A2A2A 0%, #151515 60%, #050005 100%); padding: 20px; border-radius: 14px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; -webkit-overflow-scrolling: touch; box-shadow: 0 16px 50px rgba(0, 0, 0, 0.95); position: relative; color: #F2FF2; border: 1px solid rgba(212, 175, 55, 0.6);">
+            <span class="close-modal" onclick="closePremiumModal()" style="position: absolute; top: 12px; right: 14px; font-size: 24px; cursor: pointer; color: #FDE7B0; line-height: 1; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; touch-action: manipulation;">&times;</span>
+            <h2 style="color:#FDE7B0; margin-top:0;">Premium Feature Locked</h2>
+            <p class="welcome-text">
+                This powerful tool is exclusive to the **Premium Barrkeh Muslimah Planner** (Upgrade Section). 
+                <br><br>
+                Unlock the **Moon Cycle Tracker, Marital Communication Prompts**, and the full **Ramadan Planner 2026** today!
+            </p>
+            <button class="start-btn" onclick="closePremiumModal()">I understand, close.</button>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA STRUCTURE & LOGIC ---
+        
+        // Fields that use the date as a key prefix
+        const DATE_KEYED_FIELDS = {
+            daily: ['daily_ayah', 'daily_p1', 'daily_p2', 'daily_p3', 'daily_energy', 'salah_fajr', 'salah_dhuhr', 'salah_asr', 'salah_maghrib', 'salah_isha', 'dhikr_subhanallah', 'dhikr_alhamdulillah', 'dhikr_allahuakbar', 'dhikr_ayatulkursi'],
+            weekly: ['weekly_p1', 'weekly_p2', 'weekly_p3', 'habit_quran', 'habit_dhikr', 'habit_water', 'habit_movement', 'habit_learn', 'habit_kindness', 'time_block_5am', 'time_block_6am', 'time_block_7am', 'time_block_8am', 'time_block_9am', 'time_block_10am', 'time_block_11am', 'time_block_12pm', 'time_block_1pm', 'time_block_2pm', 'time_block_3pm', 'time_block_4pm', 'time_block_5pm', 'time_block_6pm', 'time_block_7pm', 'time_block_8pm'],
+        };
+
+        // Fields saved globally (no date prefix)
+        const GLOBAL_FIELDS = ['vision_becoming', 'vision_spiritual', 'vision_purpose', 'vision_success', 'value_faith', 'value_family', 'value_knowledge', 'value_service', 'value_balance', 'value_beauty', 'monthly_month', 'monthly_goals_spiritual', 'monthly_goals_personal', 'monthly_goals_career', 'career_status', 'career_goals', 'career_s1', 'career_s2', 'career_s3', 'home_peace', 'home_mealplan', 'home_tidy', 'home_kitchen', 'home_laundry', 'home_prayerspace', 'weekly_challenge_reflection'];
+        
+        function getCurrentDateKey(section) {
+            const dateInputId = section + '_date';
+            const dateEl = document.getElementById(dateInputId);
+            // Use the date input value to create a simple key (e.g., '20251213')
+            // If the element doesn't exist (e.g., vision page), it defaults to the prefix
+            // It will return 'default_no_date' if the element doesn't exist or is empty
+            return dateEl && dateEl.value ? dateEl.value.replace(/-/g, '') : section + '_default'; 
+        }
+
+        // --- SAVING DATA ---
+        
+        function saveData(sectionToSave) {
+            let fieldsToSave;
+            let keyPrefix = '';
+
+            if (sectionToSave === 'global') {
+                fieldsToSave = GLOBAL_FIELDS;
+            } else if (DATE_KEYED_FIELDS[sectionToSave]) {
+                fieldsToSave = DATE_KEYED_FIELDS[sectionToSave];
+                keyPrefix = getCurrentDateKey(sectionToSave) + '_';
+            } else {
+                return; // Invalid section
+            }
+
+            fieldsToSave.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+
+                let value;
+
+                if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
+                    if (el.type === 'checkbox') {
+                        value = el.checked ? 'true' : 'false';
+                    } else if (el.type === 'range') {
+                        value = el.value;
+                    } else {
+                        value = el.value;
+                    }
+                } else if (el.classList.contains('salah-item') || el.classList.contains('habit-item') || el.classList.contains('value-bubble')) {
+                    value = el.classList.contains('completed') ? 'completed' : 'incomplete';
+                } else if (el.classList.contains('time-block')) {
+                    const classes = Array.from(el.classList).filter(c => c !== 'time-block' && c !== 'completed');
+                    // Save only the state (worship, work, or rest)
+                    value = classes.length > 0 ? classes[0] : '';
+                }
+                
+                // Special handling for monthly_month and weekly_challenge_reflection: save its value but don't treat it as a date-keyed item
+                if (id === 'monthly_month' || id === 'weekly_challenge_reflection') {
+                    localStorage.setItem(id, value);
+                } else {
+                    localStorage.setItem(keyPrefix + id, value);
+                }
+            });
+            
+            if (sectionToSave === 'daily') {
+                 updateSpiritualProgress();
+            }
+        }
+        
+        function saveAndConfirm(section) {
+            saveData(section);
+            let friendlyName;
+            if (section === 'daily') {
+                friendlyName = 'DAILY & SPIRITUAL';
+            } else if (section === 'global') {
+                friendlyName = 'GLOBAL';
+            } else {
+                friendlyName = section.toUpperCase();
+            }
+            alert('✅ All progress for ' + friendlyName + ' saved!');
+        }
+        
+        // --- LOADING DATA ---
+
+        function loadSectionData(section) {
+            const fieldsToLoad = (section === 'global') ? GLOBAL_FIELDS : DATE_KEYED_FIELDS[section];
+            const keyPrefix = (section === 'global') ? '' : getCurrentDateKey(section) + '_';
+
+            fieldsToLoad.forEach(id => {
+                let keyToLoad = keyPrefix + id;
+                
+                // Special handling for monthly_month and weekly_challenge_reflection
+                if (id === 'monthly_month' || id === 'weekly_challenge_reflection' || section === 'global') {
+                    // Check if it's a global field (since global fields don't have a prefix)
+                    if (GLOBAL_FIELDS.includes(id)) {
+                        keyToLoad = id;
+                    }
+                }
+                
+                const finalValue = localStorage.getItem(keyToLoad);
+
+                if (finalValue === null) return;
+
+                const el = document.getElementById(id);
+                if (!el) return;
+                
+                if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
+                    if (el.type === 'checkbox') {
+                        el.checked = (finalValue === 'true');
+                    } else if (el.type === 'range') {
+                        el.value = finalValue;
+                    } else {
+                        el.value = finalValue;
+                    }
+                } else if (el.classList.contains('salah-item') || el.classList.contains('habit-item') || el.classList.contains('value-bubble')) {
+                    if (finalValue === 'completed') {
+                        el.classList.add('completed');
+                    } else {
+                        el.classList.remove('completed');
+                    }
+                } else if (el.classList.contains('time-block')) {
+                    el.className = 'time-block'; // Reset classes
+                    const baseTime = el.innerText.split('\n')[0].split('<')[0].trim();
+                    if (finalValue) {
+                        el.classList.add(finalValue);
+                        // Restore the inner HTML content based on the saved state
+                        const statusText = finalValue.charAt(0).toUpperCase() + finalValue.slice(1);
+                        el.innerHTML = baseTime + `<br><span style="font-size: 11px; font-weight: 600;">${statusText}</span>`;
+                    } else {
+                        el.innerHTML = baseTime;
+                    }
+                }
+            });
+            
+            if (section === 'daily') {
+                 updateSpiritualProgress();
+            }
+        }
+        
+        function clearSectionContent(section) {
+             const fieldsToClear = DATE_KEYED_FIELDS[section];
+
+             fieldsToClear.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                
+                if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
+                    if (el.type === 'checkbox') {
+                        el.checked = false;
+                    } else if (el.type === 'range') {
+                        el.value = 5; // Reset slider to middle
+                    } else {
+                        el.value = ''; // Clear text inputs/textareas
+                    }
+                } else if (el.classList.contains('salah-item') || el.classList.contains('habit-item')) {
+                    el.classList.remove('completed');
+                } else if (el.classList.contains('time-block')) {
+                    el.className = 'time-block';
+                    const baseTime = el.innerText.split('\n')[0].split('<')[0].trim();
+                    el.innerHTML = baseTime;
+                }
+            });
+            
+            if (section === 'daily') {
+                 // Also clear spiritual trackers on the daily page as they are linked to the date
+                 document.querySelectorAll('#salahTracker .salah-item').forEach(el => el.classList.remove('completed'));
+                 document.querySelectorAll('#dhikrChecklist input[type="checkbox"]').forEach(el => el.checked = false);
+                 updateSpiritualProgress(); // Reset progress bar and score
+            }
+        }
+        
+        function handleDateChange(section) {
+            // 1. Clear current fields in the UI
+            clearSectionContent(section);
+            
+            // 2. Load data for the newly selected date (which might be empty)
+            loadSectionData(section);
+            
+            alert(`Planner for ${section.toUpperCase()} refreshed for the selected date!`);
+        }
+        
+        // --- INITIAL LOAD ---
+        function loadData() {
+            // 1. Set today's date on initial load for Daily
+            const today = new Date().toISOString().split('T')[0];
+            const dailyDateEl = document.getElementById('daily_date');
+            
+            if (dailyDateEl) {
+                // Always set the date input to today if it's currently empty, to load today's data by default
+                if (!dailyDateEl.value) { 
+                    dailyDateEl.value = today;
+                }
+            }
+            
+            // 2. Load all global data
+            loadSectionData('global');
+            
+            // 3. Load date-keyed data based on currently set dates
+            if (dailyDateEl && dailyDateEl.value) loadSectionData('daily');
+            const weeklyDateEl = document.getElementById('weekly_date');
+            if (weeklyDateEl && weeklyDateEl.value) loadSectionData('weekly');
+
+            // 4. Load dynamic content
+            loadDailyQuote();
+            loadWeeklyChallenge(); // Load the new weekly challenge on startup
+            displayCurrentDate();
+            updateSpiritualProgress(); // Ensures Barakah Score is set on load
+        }
+        
+        // ** NEW PDF CORE FUNCTIONALITY **
+        
+        // Utility function to convert interactive elements in a clone to static text for PDF.
+        function convertForPDF(element) {
+            
+            // Refined styles for PDF (smaller, neater)
+            element.querySelectorAll('h2, h3').forEach(h => {
+                h.style.color = '#111827';
+                h.style.paddingBottom = '3px';
+                h.style.borderBottom = '1px solid #ccc';
+                h.style.marginBottom = '5px'; 
+                h.style.fontSize = '14px'; // Smaller header font
+            });
+            
+            // Convert inputs/textareas to static text with their CURRENT VALUE
+            element.querySelectorAll('.input-field').forEach(input => {
+                // IMPORTANT: Since we call loadSectionData before export, the DOM elements already hold the correct data.
+                const originalInput = document.getElementById(input.id) || input; 
+                const currentValue = originalInput.value || ''; 
+
+                const p = document.createElement('p');
+                p.style.fontSize = '11px'; // Smallest text font
+                p.style.whiteSpace = 'pre-wrap';
+                p.style.border = '1px solid #ddd';
+                p.style.padding = '4px'; // Reduced padding
+                p.style.borderRadius = '3px';
+                p.style.marginTop = '2px';
+                p.style.marginBottom = '4px'; 
+                p.style.background = '#f9f9f9';
+                
+                if (originalInput.type === 'date' || originalInput.type === 'month') {
+                    p.innerHTML = `**Date/Month:** ${currentValue || '[No date entered]'}`;
+                } else if (originalInput.type === 'range') {
+                    p.innerHTML = `**Energy Level:** ${currentValue || 5}/10`;
+                } else {
+                    p.innerHTML = currentValue.replace(/\n/g, '<br>') || '[No entry made]';
+                }
+                // Replace the input in the clone with the static text
+                input.parentNode.replaceChild(p, input);
+            });
+
+            // Convert checklists/toggles into a list with checkmarks
+            element.querySelectorAll('.checkbox-item, .salah-item, .habit-item, .value-bubble').forEach(item => {
+                const originalItem = document.getElementById(item.id) || item;
+                
+                let isChecked = false;
+                if (originalItem.querySelector('input[type="checkbox"]')) {
+                    isChecked = originalItem.querySelector('input[type="checkbox"]').checked;
+                } else {
+                    isChecked = originalItem.classList.contains('completed');
+                }
+                
+                const emoji = isChecked ? '✅' : '⬜';
+                // Clean up text content for PDF view
+                const text = originalItem.textContent.trim().replace(/\s\s+/g, ' / ').replace(/(\r\n|\n|\r)/gm, ' - ');
+                
+                item.style.background = isChecked ? '#e8f0e4' : '#f5f5f5';
+                item.style.color = '#000';
+                item.style.border = '1px solid #ddd';
+                item.style.padding = '5px'; 
+                item.style.marginBottom = '3px'; 
+                item.style.display = 'block';
+                item.style.fontSize = '11px'; // Small font for checklist items
+                item.innerHTML = `${emoji} ${text}`;
+            });
+            
+            // Convert time blocks
+            element.querySelectorAll('.time-block').forEach(item => {
+                const originalItem = document.getElementById(item.id) || item;
+                const baseTime = originalItem.textContent.split('\n')[0].split('<')[0].trim();
+                let text = baseTime;
+                let emoji = '🕒';
+                
+                if (originalItem.classList.contains('worship')) {
+                    text += ' (Worship)';
+                    emoji = '📿';
+                } else if (originalItem.classList.contains('work')) {
+                    text += ' (Work)';
+                    emoji = '💼';
+                } else if (originalItem.classList.contains('rest')) {
+                    text += ' (Rest)';
+                    emoji = '🌙';
+                }
+                
+                item.style.background = '#f5f5f5';
+                item.style.color = '#000';
+                item.style.border = '1px solid #ddd';
+                item.style.padding = '5px'; 
+                item.style.marginBottom = '3px'; 
+                item.style.display = 'block';
+                item.style.fontSize = '11px'; // Small font for time blocks
+                item.innerHTML = `${emoji} ${text}`;
+            });
+            
+            // Remove the Time Blocking Legend from the PDF
+            const legend = element.querySelector('.time-block-grid')?.previousElementSibling;
+            if (legend && legend.style.display === 'flex') {
+                legend.remove();
+            }
+            
+            // Remove Save buttons from clone
+            element.querySelectorAll('.btn').forEach(btn => btn.remove());
+        }
+        
+        // Core function to generate the PDF from a prepared HTML element
+        async function exportElementToPDF(element, title) {
+            
+            // 1. Temporarily append the clone off-screen for rendering
+            element.style.position = 'absolute';
+            element.style.left = '-9999px';
+            document.body.appendChild(element);
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = doc.internal.pageSize.getWidth();
+            const pdfHeight = doc.internal.pageSize.getHeight();
+            
+            // --- PDF Header ---
+            doc.setFont('times', 'bold');
+            doc.setTextColor(100, 70, 0); // Dark Gold/Brown
+            doc.setFontSize(20); // Reduced logo font
+            doc.text("BARRKEH", 15, 15);
+            doc.setFontSize(8); // Reduced sub-text font
+            doc.text("DIGIPRODUCTS - Premium Muslimah Planner", 15, 19);
+            doc.setDrawColor(212, 175, 55);
+            doc.setLineWidth(0.5);
+            doc.line(15, 22, pdfWidth - 15, 22);
+            
+            // --- Section Title ---
+            doc.setFont('times', 'bold');
+            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(14); // Reduced title font
+            doc.text(title, 15, 30);
+            doc.setLineWidth(0.2);
+            doc.line(15, 32, pdfWidth - 15, 32);
+            
+            // --- HTML to Canvas/PDF Conversion ---
+            html2canvas(element, { 
+                scale: 3, 
+                backgroundColor: '#ffffff',
+                useCORS: true 
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/jpeg', 1.0);
+                const startY = 35; 
+                const imgWidth = pdfWidth - 20; 
+                const imgHeight = (canvas.height * imgWidth) / canvas.width; 
+                let heightLeft = imgHeight;
+                let position = startY; 
+
+                doc.addImage(imgData, 'JPEG', 10, startY, imgWidth, imgHeight);
+                heightLeft -= (pdfHeight - startY);
+
+                while (heightLeft > 0) {
+                    position = imgHeight - heightLeft;
+                    doc.addPage();
+                    doc.addImage(imgData, 'JPEG', 10, -position + 10, imgWidth, imgHeight); 
+                    heightLeft -= pdfHeight;
+                }
+
+                doc.save(`${title.replace(/ /g, '_').replace(/:/g, '')}_${new Date().toISOString().slice(0, 10)}.pdf`);
+                
+            }).catch(error => {
+                alert("Error exporting PDF. Please try again. If the issue persists, the content might be too complex or too long for the browser to render.");
+                console.error("html2canvas error:", error);
+            }).finally(() => {
+                // --- Cleanup ---
+                if (document.body.contains(element)) {
+                    document.body.removeChild(element);
+                }
+            });
+        }
+        
+        // Generic PDF preparation for standalone pages (Vision, Weekly, Monthly, Challenge)
+        async function prepareSectionForPDF(sectionId) {
+            // Determine the content ID based on the section ID
+            let contentId = sectionId + 'Content';
+            if (sectionId === 'weekly_challenge') contentId = 'weeklyChallengeContent';
+
+            // Ensure the latest data is loaded for the section before export
+            if (sectionId === 'vision' || sectionId === 'monthly' || sectionId === 'career' || sectionId === 'home life' || sectionId === 'weekly_challenge') {
+                loadSectionData('global');
+            } else if (sectionId === 'weekly') {
+                loadSectionData('weekly');
+            }
+
+            const content = document.getElementById(contentId);
+            
+            // Create a deep clone of the content section
+            const tempDiv = content.cloneNode(true);
+            
+            // Apply base printable styles
+            tempDiv.style.padding = '10px'; 
+            tempDiv.style.color = '#000000';
+            tempDiv.style.background = '#ffffff'; 
+            tempDiv.style.fontFamily = 'Arial, sans-serif';
+            tempDiv.style.maxWidth = '100%';
+            
+            // Convert interactive elements to static text/checkmarks
+            convertForPDF(tempDiv);
+            
+            // Call the core export function
+            const titleMap = {
+                'vision': 'My Life Vision',
+                'weekly': 'Weekly Overview',
+                'monthly': 'Monthly Dashboard',
+                'weekly_challenge': 'Asma ul Husna Weekly Challenge',
+                // Add others if needed
+            };
+            await exportElementToPDF(tempDiv, titleMap[sectionId] || 'Planner Section');
+        }
+
+        // FIX: Combined PDF export for the Daily Page (Daily + Spiritual)
+        async function exportDailyPlannerAndSpiritual() {
+            // 1. Ensure latest data is loaded into the DOM before cloning
+            loadSectionData('daily'); 
+            
+            // 2. Get the source elements
+            const dailyContent = document.getElementById('dailyContent');
+            const spiritualSection = document.getElementById('spiritual'); 
+            const date = document.getElementById('daily_date').value;
+
+            // 3. Create the combined temporary div
+            const tempDiv = document.createElement('div');
+            tempDiv.style.width = '100%';
+            tempDiv.style.padding = '10px';
+            tempDiv.style.color = '#000000';
+            tempDiv.style.background = '#ffffff'; 
+            tempDiv.style.fontFamily = 'Arial, sans-serif'; 
+            tempDiv.style.boxSizing = 'border-box'; 
+
+            // 4. Clone and process Daily Content
+            const dailyClone = dailyContent.cloneNode(true);
+            convertForPDF(dailyClone); 
+            
+            // 5. Construct Spiritual Content Manually (cloning the relevant parts)
+            const spiritualContentHtml = `
+                <div style="margin-top: 15px;">
+                    <h2 style="font-size: 14px; margin-top: 10px; border-bottom: 1px solid #ddd; padding-bottom: 3px; font-weight: bold;">Spiritual & Barakah Tracking</h2>
+                    <h3 style="font-size: 13px; margin-top: 8px;">Daily Barakah Score:</h3>
+                    <p style="font-size: 11px; padding: 4px; background: #e8f0e4; border: 1px solid #ddd; border-radius: 3px;">
+                        ${document.getElementById('barakahScoreDisplay').innerText}/9 items completed.
+                    </p>
+                </div>
+                <div id="pdf-salah-tracker">
+                    <h3 style="font-size: 13px; margin-top: 8px;">Salah Tracker</h3>
+                    ${spiritualSection.querySelector('#salahTracker').outerHTML}
+                </div>
+                <div id="pdf-dhikr-checklist">
+                    <h3 style="font-size: 13px; margin-top: 8px;">Daily Dhikr Checklist</h3>
+                    ${spiritualSection.querySelector('#dhikrChecklist').outerHTML}
+                </div>
+            `;
+            
+            const spiritualClone = document.createElement('div');
+            spiritualClone.innerHTML = spiritualContentHtml;
+            convertForPDF(spiritualClone);
+            
+            // 6. Combine and export
+            const finalTitle = `Daily Planner & Spiritual Tracker: ${date}`;
+            tempDiv.innerHTML = `<h1 style="font-size: 16px; text-align: center; margin-bottom: 10px;">${finalTitle}</h1>`;
+            tempDiv.appendChild(dailyClone);
+            tempDiv.appendChild(spiritualClone);
+            
+            await exportElementToPDF(tempDiv, finalTitle);
+        }
+        
+        function updateSpiritualProgress() {
+            let completedCount = 0;
+            const dateKey = getCurrentDateKey('daily');
+            
+            // Salah count (5 items)
+            const salahItems = document.querySelectorAll('#salahTracker .salah-item');
+            salahItems.forEach(item => {
+                if (localStorage.getItem(dateKey + '_' + item.id) === 'completed') {
+                    completedCount++;
+                }
+            });
+
+            // Dhikr count (4 items)
+            const dhikrCheckboxes = document.querySelectorAll('#dhikrChecklist input[type="checkbox"]');
+            dhikrCheckboxes.forEach(checkbox => {
+                if (localStorage.getItem(dateKey + '_' + checkbox.id) === 'true') {
+                    completedCount++;
+                }
+            });
+
+            const totalItems = 9; // 5 Salah + 4 Dhikr
+            const percentage = Math.round((completedCount / totalItems) * 100);
+            const progressBar = document.getElementById('spiritualProgressBar');
+            const progressText = document.getElementById('progressText');
+            const scoreDisplay = document.getElementById('barakahScoreDisplay'); 
+
+            if(progressBar) {
+                progressBar.style.width = percentage + '%';
+                progressBar.innerText = percentage + '%';
+            }
+            if(progressText) {
+                progressText.innerText = `${completedCount}/${totalItems} items completed.`;
+            }
+            // Update Barakah Score display
+            if (scoreDisplay) {
+                scoreDisplay.innerText = completedCount;
+            }
+        }
+        
+        // --- Toggles & Helpers ---
+        const DAILY_QUOTES = [
+            "Barakah: 'The attachment of Divine Goodness to a thing.' May Allah bless your day.",
+            "Start with Bismillah, end with Alhamdulillah. This is the recipe for a day filled with Barakah.",
+            "Taqwa is the engine of Barakah. Focus on your relationship with Allah (SWT).",
+            "Give thanks, and Allah will increase you. Gratitude is the key to an abundant life.",
+            "Worrying solves nothing. Trust in Al-Wakeel (The Trustee) and focus on your effort.",
+            "The best of women are those who are pleased with their husbands and families. May Allah grant you peace.",
+            "The seeking of knowledge is a duty upon every Muslim. Dedicate a moment to learn today.",
+            "A moment of reflection (Tafakkur) is better than a night of heedless worship.",
+            "Kindness is a mark of faith, and whoever is not kind has no faith. Spread kindness today.",
+            "Sadaqah (charity) extinguishes sin as water extinguishes fire. Find a small act of giving.",
+            "The strong are not the ones who defeat others. The strong are the ones who control themselves when angry.",
+            "Do not belittle any good deed, even meeting your brother with a cheerful face.",
+            "Verily, with hardship, there is ease. Trust in the promise of Allah (Inshirah, 94:6).",
+            "Say 'Alhamdulillah' for what you have, and you will have more. Your provision increases with gratitude.",
+            "Your relationship with the Qur'an determines the light in your heart. Seek its solace today.",
+            "Patience (Sabr) is light. May Allah grant you beautiful patience in all your affairs."
+        ];
+        
+        const BARAKAH_DUAS = [
+            '<h2 style="color:#FDE7B0;">Daily Dua for Barakah</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">O Allah, I ask You for goodness in this day, its victory, its help, its light, its blessings, and its guidance. I seek refuge in You from the evil of this day and the evil that follows it. (Similar to Abu Dawud)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for Protection (Morning/Evening)</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma inni as-alukal-&lsquo;afwa wal-&lsquo;afiyah fid-dunya wal-akhirah. (O Allah, I ask You for forgiveness and well-being in this world and the Hereafter.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua when feeling overwhelmed</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Ya Hayyu, Ya Qayyumu, bi rahmatika astagheeth. (O Ever-Living, O Sustainer, by Your Mercy I seek aid.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for seeking knowledge</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Rabbi zidni &lsquo;ilma. (My Lord, increase me in knowledge.) (Surah Taha, 20:114)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for an easy task</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma la sahla illa ma ja&lsquo;altahu sahla, wa anta taj&lsquo;alul-hazna idha shi&rsquo;ta sahla. (O Allah, there is no ease except in that which You have made easy, and You can make a hard thing easy if You will.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for forgiveness</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Astaghfirullah alladhi la ilaha illa Huwal-Hayyul-Qayyumu wa atubu ilayh. (I seek the forgiveness of Allah, besides whom there is no god, the Ever-Living, the Self-Subsisting, and I turn to Him in repentance.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua before starting a meal</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Bismillahi wa &lsquo;ala barakatillah. (In the Name of Allah and with the blessings of Allah.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for protection from laziness</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma inni a&rsquo;udhu bika minal-&lsquo;ajzi wal-kasal. (O Allah, I seek refuge in You from inability and laziness.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for wealth and sufficiency</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumm-akfini bihalalika &lsquo;an haramika, wa aghnini bifadlika &lsquo;amman siwaka. (O Allah, grant me sufficiency with Your lawful provision, keep me away from the unlawful, and make me independent of all besides You.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for a good ending</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma inni as-aluka husnal-khatimah. (O Allah, I ask You for a good ending.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for a blissful marriage/family</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Rabbana hab lana min azwajina wa dhurriyyatina qurrata a&rsquo;yunin wa&rsquo;j&lsquo;alna lil-muttaqina imama. (Our Lord, grant us from among our wives and offspring comfort to our eyes and make us a leader for the righteous.) (Surah Al-Furqan, 25:74)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for gratitude</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma a&rsquo;inni &lsquo;ala dhikrika wa shukrika wa husni &lsquo;ibadatik. (O Allah, help me to remember You, to thank You, and to worship You in the best of manners.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for protection from sadness</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma inni a&rsquo;udhu bika minal-hammi wal-hazan. (O Allah, I seek refuge in You from worry and grief.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for parents</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Rabbir hamhuma kama rabbayani saghira. (My Lord, grant mercy to them both as they did care for me when I was young.) (Surah Al-Isra, 17:24)</p>',
+            '<h2 style="color:#FDE7B0;">Dua when angry</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">A&rsquo;udhu billahi minash-shaytanir-rajim. (I seek refuge in Allah from the accursed Shaytan.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for sincerity</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma inni a&lsquo;udhu bika an ushrika bika wa ana a&rsquo;lamu wa astaghfiruka lima la a&rsquo;lamu. (O Allah, I seek refuge in You lest I associate anything with You while I know it, and I seek Your forgiveness for what I do not know.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for acceptance of deeds</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Rabbana taqabbal minna innaka Antas-Sami&lsquo;ul-&lsquo;Aleem. (Our Lord, accept from us, for You are the Hearing, the Knowing.) (Surah Al-Baqarah, 2:127)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for health and strength</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma &lsquo;afini fi badani. Allahumma &lsquo;afini fi sam&lsquo;i. Allahumma &lsquo;afini fi basari. (O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for beautiful manners</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma ahsanta khalqi fa ahsin khuluqi. (O Allah, You have made my creation beautiful, so make my manners beautiful.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for contentment</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma qanni&lsquo;ni bima razaqtani, wa barik li fihi. (O Allah, make me content with what You have provided for me, and bless it for me.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for peace in the heart</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Hasbunallah wa ni&lsquo;mal Wakeel. (Allah is sufficient for us, and He is the best Guardian.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for success in tests/work</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Rabbi yassir wa la tu&lsquo;assir, Rabbi tammim bil khayr. (My Lord, make it easy and do not make it difficult. My Lord, conclude with goodness.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for the strength to pray</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Rabbi ij&lsquo;alni muqimas-salati wa min dhurriyyati. (My Lord, make me and from my offspring among those who establish prayer.) (Surah Ibrahim, 14:40)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for mercy</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Rabbana atina min ladunka rahmatan wa hayyi&rsquo; lana min amrina rashada. (Our Lord, grant us from Yourself mercy and prepare for us from our affair right guidance.) (Surah Al-Kahf, 18:10)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for provision</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma barik li fi rizqi. (O Allah, bless my provision for me.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua when doing good deeds</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Innaka antal-Wahhab. (Indeed, You are the Bestower.) (Reflect on the power of Al-Wahhab to bless your actions.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for light</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahummaj&lsquo;al fi qalbi nura, wa fi basari nura, wa fi sam&lsquo;i nura. (O Allah, place light in my heart, light in my sight, and light in my hearing.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for overcoming debt</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Allahumma inni a&rsquo;udhu bika minal-ma&rsquo;thami wal-maghram. (O Allah, I seek refuge in You from sin and heavy debt.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for guidance in trials</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">Inna lillahi wa inna ilayhi raji&lsquo;un. Allahumma-jurni fi musibati wa akhlif li khayran minha. (To Allah we belong and to Him is our return. O Allah, reward me for my calamity and replace it for me with something better.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua for protection of children</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">U&rsquo;idhukuma bi kalimatil-lahi at-tammah min kulli shaytanin wa hammah wa min kulli &lsquo;aynin lammah. (I seek refuge for you both in the Perfect Words of Allah, from every devil and evil eye.)</p>',
+            '<h2 style="color:#FDE7B0;">Dua of Yunus (Alayhis-Salam)</h2><p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">La ilaha illa anta Subhanaka inni kuntu minaz-zalimin. (There is no god but You; glory be to You! Indeed, I was among the wrongdoers.) (Surah Al-Anbiya, 21:87)</p>'
+        ];
+        
+        // NEW: 99 Names of Allah (Asma ul Husna)
+        const ASAM_UL_HUSNA = [
+            { arabic: 'Allah', meaning: 'The God', challenge: "Reflect on the all-encompassing nature of Allah's Oneness. How does this reality shape your daily decisions?" },
+            { arabic: 'Ar-Rahman', meaning: 'The Most Compassionate', challenge: "Perform an act of compassion (rahm) today without expecting anything in return, reflecting Ar-Rahman's mercy." },
+            { arabic: 'Ar-Rahim', meaning: 'The Most Merciful', challenge: "Ask Allah to make His mercy specific to you in this life and the next. Renew your commitment to sincere repentance (Tawbah) this week." }, // REVISED
+            { arabic: 'Al-Malik', meaning: 'The King, The Sovereign', challenge: "Acknowledge Al-Malik's ultimate ownership. How can you detach yourself from worldly possessions and desires today?" },
+            { arabic: 'Al-Quddus', meaning: 'The Holy, The Pure', emotion: 'overwhelmed', challenge: "Reflect on the perfection of Al-Quddus. Seek purity in your thoughts and intentions this week." },
+            { arabic: 'As-Salam', meaning: 'The Source of Peace', emotion: 'anxious', challenge: "Turn to As-Salam for peace. Practice mindful breathing while reciting 'Ya Salam' 7 times today." },
+            { arabic: 'Al-Mu’min', meaning: 'The Giver of Faith', challenge: "How can you strengthen your faith (Iman) in Al-Mu'min? Dedicate an extra 5 minutes to Qur'an reflection." },
+            { arabic: 'Al-Muhaymin', meaning: 'The Guardian, The Overseer', challenge: "Trust in Al-Muhaymin's protection. Release a worry that is outside your control to Allah (SWT)." },
+            { arabic: 'Al-Aziz', meaning: 'The Almighty, The Invincible', challenge: "Reflect on Al-Aziz's power. Where in your life are you seeking power or recognition from people instead of Allah?" },
+            { arabic: 'Al-Jabbar', meaning: 'The Compeller, The Restorer', challenge: "Ask Al-Jabbar to mend a broken relationship or a painful memory this week. Write a Dua specifically for this restoration." },
+            { arabic: 'Al-Mutakabbir', meaning: 'The Majestic, The Supreme', challenge: "Contemplate Al-Mutakabbir's greatness. Practice humility by actively listening to someone you usually interrupt." },
+            { arabic: 'Al-Khaliq', meaning: 'The Creator', challenge: "Look at the beauty of creation. Thank Al-Khaliq for a specific element of nature you often take for granted." },
+            { arabic: 'Al-Bari’', meaning: 'The Evolver, The Maker', challenge: "Reflect on your own unique design by Al-Bari'. Write down three unique strengths you possess." },
+            { arabic: 'Al-Musawwir', meaning: 'The Fashioner of Forms', challenge: "Ask Al-Musawwir to fashion your character (Khuluq) into something pleasing to Him." },
+            { arabic: 'Al-Ghaffar', meaning: 'The Forgiving', challenge: "Turn to Al-Ghaffar, the All-Forgiving. Commit to improving one spiritual weakness or recurring negative habit for the next 24 hours." }, // REVISED
+            { arabic: 'Al-Qahhar', meaning: 'The Subduer, The Dominant', challenge: "Recognize Al-Qahhar's dominance over all things. Ask for strength to subdue your own lower desires (nafs)." },
+            { arabic: 'Al-Wahhab', meaning: 'The Bestower', challenge: "Reflect on a gift Al-Wahhab has given you recently (not material). Express gratitude for it in detail." },
+            { arabic: 'Ar-Razzaq', meaning: 'The Provider', challenge: "Trust Ar-Razzaq completely. Donate a small amount of money or food as a sign of trust in His provision." },
+            { arabic: 'Al-Fattah', meaning: 'The Opener', challenge: "Ask Al-Fattah to open doors of opportunity, ease, or understanding for you in a difficult situation." },
+            { arabic: 'Al-Alim', meaning: 'The All-Knowing', challenge: "Contemplate Al-Alim's perfect knowledge. There is nothing hidden from Him. How does this awareness change how you act in solitude?" },
+            { arabic: 'Al-Qabid', meaning: 'The Restrainer', challenge: "Reflect on how Al-Qabid restrains provision and ease. Practice contentment (Qana'ah) with what you currently have." },
+            { arabic: 'Al-Basit', meaning: 'The Extender', challenge: "Reflect on how Al-Basit extends provision and ease. Plan a small act of kindness to extend goodwill to someone else." },
+            { arabic: 'Al-Khafid', meaning: 'The Abaser', challenge: "Recognize that Al-Khafid can abase anyone. Be humble and avoid looking down on others, regardless of their status." },
+            { arabic: 'Ar-Rafi’', meaning: 'The Exalter', challenge: "Ask Ar-Rafi' to elevate your status in Jannah and your deeds in this life." },
+            { arabic: 'Al-Mu’izz', meaning: 'The Giver of Honour', challenge: "Understand that true honour comes only from Al-Mu'izz. Dedicate a good deed to Allah alone, seeking no praise from people." },
+            { arabic: 'Al-Mudhill', meaning: 'The Giver of Dishonour', challenge: "Fearing Al-Mudhill, protect yourself from actions that bring dishonour by avoiding backbiting and gossip." },
+            { arabic: 'As-Sami’', meaning: 'The All-Hearing', challenge: "Since As-Sami' hears every word, purify your speech. Dedicate today to speaking only good or remaining silent." },
+            { arabic: 'Al-Basir', meaning: 'The All-Seeing', challenge: "Since Al-Basir sees every deed, seek to beautify your worship today, knowing He watches." },
+            { arabic: 'Al-Hakam', meaning: 'The Judge', challenge: "Trust Al-Hakam's perfect justice. Let go of a resentment you hold against someone, leaving the judgment to Allah." },
+            { arabic: 'Al-Adl', meaning: 'The Just', challenge: "Practice fairness (Adl) in your dealings with others, even those you dislike, reflecting this Name." },
+            { arabic: 'Al-Latif', meaning: 'The Subtle One, The Gentle', emotion: 'low', challenge: "Contemplate Al-Latif's subtle ways. Note three small, positive, unexpected things that happened today as signs of His subtlety." },
+            { arabic: 'Al-Khabir', meaning: 'The All-Aware', challenge: "Al-Khabir knows your hidden thoughts and intentions. Dedicate today to purifying your intentions in all your actions." }, // REVISED
+            { arabic: 'Al-Haleem', meaning: 'The Forbearing', challenge: "Ask Al-Haleem for patience when dealing with children or challenging individuals." },
+            { arabic: 'Al-Azim', meaning: 'The Magnificent', challenge: "Recite SubhanAllah Al-Azim with true contemplation of His immense glory." },
+            { arabic: 'Al-Ghafur', meaning: 'The All-Forgiving', challenge: "Make a sincere pledge to Al-Ghafur to improve one area of your life this week." },
+            { arabic: 'Ash-Shakur', meaning: 'The Appreciative', emotion: 'grateful', challenge: "List ten things you are grateful for and thank Ash-Shakur profusely for them." },
+            { arabic: 'Al-Ali', meaning: 'The Most High', challenge: "Remember that Al-Ali is above all things. Avoid getting consumed by trivial worldly disputes." },
+            { arabic: 'Al-Kabir', meaning: 'The Great', challenge: "Perform a good deed that is 'great' in your eyes, but do it in secret for Al-Kabir." },
+            { arabic: 'Al-Hafiz', meaning: 'The Preserver', challenge: "Ask Al-Hafiz to preserve your health, your faith, and your family today." },
+            { arabic: 'Al-Muqit', meaning: 'The Maintainer', challenge: "Trust Al-Muqit to maintain your body and soul. Feed someone who is hungry today." },
+            { arabic: 'Al-Hasib', meaning: 'The Reckoner', challenge: "Hold yourself accountable for a small habit before Al-Hasib holds you accountable." },
+            { arabic: 'Al-Jalil', meaning: 'The Majestic', challenge: "Reflect on the awe-inspiring greatness of Al-Jalil when you look at the sky or the ocean." },
+            { arabic: 'Al-Karim', meaning: 'The Generous', challenge: "Be generous with your time, money, or knowledge today, reflecting the attribute of Al-Karim." },
+            { arabic: 'Ar-Raqib', meaning: 'The Watchful', challenge: "Since Ar-Raqib is watching, ensure your actions are in line with your intentions." },
+            { arabic: 'Al-Mujib', meaning: 'The Responder', challenge: "Call upon Al-Mujib with certainty. Make a specific Dua you have been putting off." },
+            { arabic: 'Al-Wasi’', meaning: 'The All-Encompassing', challenge: "Meditate on Al-Wasi''s vastness. Realize that His mercy and knowledge encompass everything." },
+            { arabic: 'Al-Hakim', meaning: 'The Wise', challenge: "Accept a recent difficult event in your life as part of Al-Hakim's perfect plan." },
+            { arabic: 'Al-Wadud', meaning: 'The Loving One', challenge: "Know that Al-Wadud loves you. Show love to another creation of Allah today." },
+            { arabic: 'Al-Majid', meaning: 'The Glorious', challenge: "Glorify Al-Majid after every Salah today with deep focus." },
+            { arabic: 'Al-Ba’ith', meaning: 'The Resurrector', challenge: "Remember that Al-Ba'ith will resurrect you. What single change would you make today if you knew your time was short?" },
+            { arabic: 'Ash-Shahid', meaning: 'The Witness', challenge: "Live your day as if Ash-Shahid is witnessing your every move—because He is." },
+            { arabic: 'Al-Haqq', meaning: 'The Truth', challenge: "Seek Al-Haqq in a matter of religious or worldly confusion." },
+            { arabic: 'Al-Wakil', meaning: 'The Trustee', emotion: 'uncertain', challenge: "Entrust a major life decision to Al-Wakil. Let go of the need to control the outcome." },
+            { arabic: 'Al-Qawi', meaning: 'The Most Strong', challenge: "When feeling weak, ask Al-Qawi for strength in faith and patience." },
+            { arabic: 'Al-Matin', meaning: 'The Firm, The Steadfast', challenge: "Ask Al-Matin to make your resolve (irada) firm in establishing a new good habit." },
+            { arabic: 'Al-Wali', meaning: 'The Protecting Friend', challenge: "Strengthen your friendship with Al-Wali by performing two extra Nawafil (voluntary) prayers." },
+            { arabic: 'Al-Hamid', meaning: 'The Praiseworthy', challenge: "Say 'Alhamdulillah' (Praise be to Allah) 100 times, focusing on the meaning of Al-Hamid." },
+            { arabic: 'Al-Muhsi', meaning: 'The Appraiser, The Counter', challenge: "Since Al-Muhsi records every deed, try to minimize frivolous time today." },
+            { arabic: 'Al-Mubdi’', meaning: 'The Originator', challenge: "Be creative today, reflecting Al-Mubdi''s power to originate." },
+            { arabic: 'Al-Mu’id', meaning: 'The Restorer', challenge: "Ask Al-Mu'id to restore a passion for worship that you may have lost." },
+            { arabic: 'Al-Muhyi', meaning: 'The Giver of Life', challenge: "Contemplate Al-Muhyi's power as you look at a living thing (plant, person, or animal)." },
+            { arabic: 'Al-Mumit', meaning: 'The Taker of Life', challenge: "Remember Al-Mumit often. Prepare for death by being prompt with your Salah." },
+            { arabic: 'Al-Hayy', meaning: 'The Ever-Living', challenge: "Connect with Al-Hayy through Dhikr, feeling His constant presence." },
+            { arabic: 'Al-Qayyum', meaning: 'The Self-Subsisting', challenge: "Recite Ayatul Kursi, focusing on the attributes of Al-Hayy and Al-Qayyum." },
+            { arabic: 'Al-Wajid', meaning: 'The Finder', challenge: "Realize that Al-Wajid finds all He seeks. Seek the pleasure of Allah." },
+            { arabic: 'Al-Majid', meaning: 'The Illustrious', challenge: "Seek the company of righteous people who remind you of Al-Majid's glory." },
+            { arabic: 'Al-Wahid', meaning: 'The One', challenge: "Renew your declaration of faith (Shahadah) today, confirming Al-Wahid's oneness." },
+            { arabic: 'Al-Ahad', meaning: 'The Only', challenge: "Remove any idols from your heart (fame, wealth, etc.), dedicating your life to Al-Ahad." },
+            { arabic: 'As-Samad', meaning: 'The Eternal Refuge', challenge: "Turn to As-Samad with a deep, silent need that only He can fulfill." },
+            { arabic: 'Al-Qadir', meaning: 'The All-Powerful', challenge: "When you feel incapable, remember Al-Qadir can do all things. Ask for strength." },
+            { arabic: 'Al-Muqtadir', meaning: 'The Creator of Power', challenge: "Ponder the vast power (Qudrah) of Al-Muqtadir in the universe." },
+            { arabic: 'Al-Muqaddim', meaning: 'The Expediter', challenge: "Ask Al-Muqaddim to hasten you toward all that is good." },
+            { arabic: 'Al-Mu’akhkhir', meaning: 'The Delayer', challenge: "Accept that Al-Mu'akhkhir delays some things for a higher wisdom (Hikmah)." },
+            { arabic: 'Al-Awwal', meaning: 'The First', challenge: "Begin a new good habit today, knowing that Al-Awwal precedes all existence." },
+            { arabic: 'Al-Akhir', meaning: 'The Last', challenge: "Remember that Al-Akhir remains when all else perishes. Focus on what is eternal." },
+            { arabic: 'Az-Zahir', meaning: 'The Manifest', challenge: "Observe the clear signs of Az-Zahir in nature and daily life." },
+            { arabic: 'Al-Batin', meaning: 'The Hidden', challenge: "Worship Al-Batin in secret, performing an act of Ibadah known only to you and Him." },
+            { arabic: 'Al-Wali', meaning: 'The Governor, The Helper', challenge: "Seek Al-Wali's help in managing your responsibilities today." },
+            { arabic: 'Al-Muta’ali', meaning: 'The Supreme, The Exalted', challenge: "Avoid arrogance. Al-Muta'ali is the only one worthy of supreme exaltation." },
+            { arabic: 'Al-Barr', meaning: 'The Source of All Goodness', challenge: "Be a source of goodness for your family today, reflecting Al-Barr's attribute." },
+            { arabic: 'At-Tawwab', meaning: 'The Acceptor of Repentance', challenge: "Make sincere Tawbah (repentance) for anything troubling you. Trust At-Tawwab." },
+            { arabic: 'Al-Muntaqim', meaning: 'The Avenger', challenge: "Leave seeking revenge to Al-Muntaqim. Forgive someone who wronged you for Allah's sake." },
+            { arabic: 'Al-Afuww', meaning: 'The Pardoner', challenge: "Forgive those who have wronged you, hoping for Al-Afuww's pardon for yourself." },
+            { arabic: 'Ar-Ra’uf', meaning: 'The Compassionate', challenge: "Show extreme kindness (Rau’f) to an animal or a marginalized person today." },
+            { arabic: 'Malik-ul-Mulk', meaning: 'King of All Sovereignty', challenge: "Remember that all power is temporary. Seek the everlasting reward of Malik-ul-Mulk." },
+            { arabic: 'Dhul-Jalali Wal-Ikram', meaning: 'Lord of Majesty and Honour', challenge: "Ponder the immense glory and generosity implied by this Name." },
+            { arabic: 'Al-Muqsit', meaning: 'The Just Equitiser', challenge: "Resolve a minor disagreement fairly, reflecting Al-Muqsit's perfect balance." },
+            { arabic: 'Al-Jami’', meaning: 'The Gatherer', challenge: "Pray to Al-Jami' to unite you with your loved ones in Jannah." },
+            { arabic: 'Al-Ghani', meaning: 'The Self-Sufficient', challenge: "Recognize that Al-Ghani needs nothing. Your worship is solely for your benefit." },
+            { arabic: 'Al-Mughni', meaning: 'The Enricher', challenge: "Ask Al-Mughni to enrich you spiritually and help you share your blessings." },
+            { arabic: 'Al-Mani’', meaning: 'The Preventer', challenge: "Be grateful to Al-Mani' for preventing you from harm or mistakes you may not even know about." },
+            { arabic: 'Ad-Darr', meaning: 'The Distressor', challenge: "Realize that Ad-Darr is the only one who can cause harm, and seek refuge in Him from all harm." },
+            { arabic: 'An-Nafi’', meaning: 'The Benefactor', challenge: "Ask An-Nafi' to make your day and your efforts beneficial for others." },
+            { arabic: 'An-Nur', meaning: 'The Light', challenge: "Ask An-Nur to fill your heart with light and guide your actions." },
+            { arabic: 'Al-Hadi', meaning: 'The Guide', challenge: "Ask Al-Hadi for guidance in a specific life choice or dilemma." },
+            { arabic: 'Al-Badi’', meaning: 'The Incomparable Originator', challenge: "Marvel at the originality of creation, reflecting Al-Badi''s power." },
+            { arabic: 'Al-Baqi', meaning: 'The Everlasting', challenge: "Focus your energy on actions that will last forever in the sight of Al-Baqi." },
+            { arabic: 'Al-Warith', meaning: 'The Inheritor', challenge: "Remember Al-Warith will inherit everything. Avoid attachment to transient things." },
+            { arabic: 'Ar-Rashid', meaning: 'The Guide to the Right Path', challenge: "Ask Ar-Rashid to show you the best, most mature path in a conflict." },
+            { arabic: 'As-Sabur', meaning: 'The Patient', challenge: "Reflect on As-Sabur's infinite patience with creation. Practice patience today when facing a delay or annoyance." }
+        ];
+
+        // NEW: Function to load the weekly challenge
+        function loadWeeklyChallenge() {
+            // Select one Name randomly from the list for the challenge
+            const challengeIndex = Math.floor(Math.random() * ASAM_UL_HUSNA.length);
+            const nameData = ASAM_UL_HUSNA[challengeIndex];
+
+            const challengeContent = document.getElementById('weeklyChallengeContent');
+            if (!challengeContent) return;
+
+            // This content is dynamic but the reflection textarea is saved globally via its ID: 'weekly_challenge_reflection'
+            challengeContent.innerHTML = `
+                <div style="background: rgba(212, 175, 55, 0.1); padding: 15px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                    <h3 style="color:#D4AF37; font-size: 20px; border-bottom: none; padding-bottom: 0; margin: 0;">
+                        ${nameData.arabic} <span style="font-size: 16px;">(${nameData.meaning})</span>
+                    </h3>
+                    <p style="margin-top: 5px; color:#E5E7EB; font-style: italic; font-size: 13px;">The Name of Allah for your week.</p>
+                </div>
+                
+                <h3 style="margin-top: 25px;">Your Weekly Reflection Challenge:</h3>
+                <p style="margin-top: 10px; line-height: 1.6; color: #CFCFCF; font-style: italic;">
+                    ${nameData.challenge}
+                </p>
+
+                <h3 style="margin-top: 30px;">My Gains & Reflections</h3>
+                <textarea id="weekly_challenge_reflection" class="input-field" placeholder="How did this Name impact my week? What did I gain? (This saves automatically)" oninput="saveData('global')"></textarea>
+            `;
+            
+            // Re-load the saved reflection content now that the element is created
+            loadSectionData('global');
+        }
+
+        function loadDailyQuote() {
+            const quoteEl = document.getElementById('dailyQuote');
+            if (!quoteEl) return;
+            
+            if (Math.random() < 0.5) {
+                // General Quote
+                const index = Math.floor(Math.random() * DAILY_QUOTES.length);
+                quoteEl.innerText = DAILY_QUOTES[index];
+            } else {
+                // Asma ul Husna Reflection
+                const nameIndex = Math.floor(Math.random() * ASAM_UL_HUSNA.length);
+                const nameData = ASAM_UL_HUSNA[nameIndex];
+                quoteEl.innerHTML = `**Asma ul Husna Focus:** <span style="color:#FDE7B0;">${nameData.arabic} (${nameData.meaning})</span>. <br> **Reflection:** ${nameData.challenge.split('. ')[0].trim()}...`;
+            }
+        }
+        
+        function showAllahName(key) {
+            let content;
+            
+            // Handle special case for Daily Barakah Dua (using existing BARAKAH_DUAS array)
+            if (key === 'barakahDua') {
+                const randomIndex = Math.floor(Math.random() * BARAKAH_DUAS.length);
+                content = BARAKAH_DUAS[randomIndex];
+            } else {
+                // Find the Name of Allah associated with the emotion/key
+                const nameData = ASAM_UL_HUSNA.find(n => n.emotion === key);
+                
+                if (nameData) {
+                    content = `
+                        <h2 style="color:#FDE7B0;">${nameData.arabic} - ${nameData.meaning}</h2>
+                        <p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">
+                            When you feel **${key}**, remember that Allah is **${nameData.arabic}**, ${nameData.meaning}.
+                            <br><br>
+                            **Guidance:** ${nameData.challenge}
+                        </p>
+                    `;
+                } else {
+                    // Fallback for names not explicitly linked (e.g., Grateful now uses Ash-Shakur)
+                    if (key === 'grateful') {
+                        const name = ASAM_UL_HUSNA.find(n => n.arabic === 'Ash-Shakur');
+                        content = `
+                            <h2 style="color:#FDE7B0;">${name.arabic} - ${name.meaning}</h2>
+                            <p style="margin-top:15px; color:#E5E7EB; line-height:1.6;">
+                                Allah is Ash-Shakur, The Appreciative. Your gratitude pleases Him and increases your blessings.
+                                <br><br>
+                                **Guidance:** ${name.challenge}
+                            </p>
+                        `;
+                    } else {
+                         content = '<h2>Dhikr & Reflection</h2><p>May Allah grant you ease and guidance.</p>';
+                    }
+                }
+            }
+            document.getElementById('modalBody').innerHTML = content;
+            document.getElementById('allahModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('allahModal').classList.remove('active');
+        }
+        
+        function toggleValue(el) {
+            el.classList.toggle('completed');
+            saveData('global'); 
+        }
+        
+        function toggleSalah(el) { 
+            el.classList.toggle('completed'); 
+            saveData('daily'); 
+        }
+        
+        function toggleDhikr(el) {
+            saveData('daily'); 
+        }
+
+        function toggleHabit(el) { 
+            el.classList.toggle('completed'); 
+            saveData('weekly'); 
+        }
+        
+        function cycleTimeBlock(el) {
+            const classList = el.classList;
+            const baseTime = el.innerText.split('\n')[0].split('<')[0].trim();
+            
+            if (classList.contains('worship')) {
+                classList.remove('worship');
+                classList.add('work');
+                el.innerHTML = baseTime + '<br><span style="font-size: 10px; font-weight: 600;">Work</span>';
+            } else if (classList.contains('work')) {
+                classList.remove('work');
+                classList.add('rest');
+                el.innerHTML = baseTime + '<br><span style="font-size: 10px; font-weight: 600;">Rest</span>';
+            } else if (classList.contains('rest')) {
+                classList.remove('rest');
+                el.innerHTML = baseTime; // Reset to show only the time
+            } else {
+                classList.add('worship');
+                el.innerHTML = baseTime + '<br><span style="font-size: 10px; font-weight: 600;">Worship</span>';
+            }
+            
+            saveData('weekly'); 
+        }
+
+        // --- NAVIGATION & MODAL LOGIC ---
+        function displayCurrentDate() {
+            const dateEl = document.getElementById('currentDateDisplay');
+            if (dateEl) {
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                dateEl.innerText = new Date().toLocaleDateString('en-US', options).toUpperCase();
+            }
+        }
+
+        function showSection(evt, sectionId) {
+            // Save data for the currently active section before switching
+            const currentActiveSection = document.querySelector('.section.active');
+            if (currentActiveSection) {
+                const activeSectionId = currentActiveSection.id;
+                if (activeSectionId === 'daily' || activeSectionId === 'weekly') {
+                    saveData(activeSectionId);
+                } else if (activeSectionId !== 'welcome' && activeSectionId !== 'upgrade') {
+                    saveData('global');
+                }
+            }
+
+            const sections = document.querySelectorAll('.section');
+            const tabs = document.querySelectorAll('.nav-tab');
+            sections.forEach(s => s.classList.remove('active'));
+            tabs.forEach(t => t.classList.remove('active'));
+            const targetSection = document.getElementById(sectionId);
+            if(targetSection) targetSection.classList.add('active');
+            if (evt && evt.target) evt.target.classList.add('active');
+            
+            // Re-load data for the newly active section to ensure it's up to date
+            if (sectionId === 'daily') loadSectionData('daily');
+            if (sectionId === 'weekly') loadSectionData('weekly');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function lockedSection() {
+            document.getElementById('premiumModal').classList.add('active');
+        }
+
+        function closePremiumModal() {
+            document.getElementById('premiumModal').classList.remove('active');
+        }
+
+        // Close when clicking outside
+        window.addEventListener('click', function(e) {
+            const premiumModal = document.getElementById('premiumModal');
+            const allahModal = document.getElementById('allahModal');
+            if (premiumModal && e.target === premiumModal) premiumModal.classList.remove('active');
+            if (allahModal && e.target === allahModal) allahModal.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
